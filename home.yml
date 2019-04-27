@@ -1,0 +1,6 @@
+- name: Configure macbook
+  hosts: all
+  connection: local
+
+  roles:
+  - geerlingguy.homebrew
