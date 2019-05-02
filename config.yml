@@ -30,3 +30,4 @@ homebrew:
     - tree
     # GoLang
     - go
+    - dep
