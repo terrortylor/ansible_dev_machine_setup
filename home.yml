@@ -2,5 +2,10 @@
   hosts: all
   connection: local
 
+  vars_files:
+    - config.yml
+
   roles:
-  - geerlingguy.homebrew
+  - { role: homebrew, tags: [ 'homebrew' ] }
+  - { role: rvm, tags: [ 'rvm' ] }
+  - { role: terminal, tags: [ 'terminal' ] }

@@ -1,0 +1,28 @@
+---
+homebrew:
+  install_user: alex.tylor
+  taps:
+    - homebrew/core
+    - homebrew/cask
+    - caskroom/cask
+  cask_apps:
+    - atom
+    - iterm2
+  packages:
+    - gnupg #used for installing RVM
+
+# downloads: ~/.ansible-downloads/
+#
+# homebrew_installed_packages:
+# #  - atom
+#
+# homebrew_taps:
+#   - homebrew/core
+#   - homebrew/cask
+#   - caskroom/cask
+#
+# homebrew_cask_appdir: /Applications
+# homebrew_cask_apps:
+# #  - google-chrome
+# #  - slack
+#   - atom

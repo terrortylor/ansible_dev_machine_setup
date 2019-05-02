@@ -38,5 +38,7 @@ Run the ansible playbook:
 ansible-playbook home.yml -i inventory -K
 ```
 
-# Notes
-* Based off Jeff Geerling's ansible playbook, which in turn used his ansible homebrew role... also his was the book I read on Ansible when I had to review a consultancy's Ansbile code they were writing for a client. FYI their code was not good
+Run the ansbile playbook, using tags:
+```
+ansible-playbook home.yml -i inventory -K --tags homebrew
+```

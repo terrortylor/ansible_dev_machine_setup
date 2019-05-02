@@ -1,0 +1,7 @@
+---
+# defaults file for homebrew
+homebrew:
+  install_user: alex.tylor
+  taps:
+  cask_apps:
+  packages:

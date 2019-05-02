@@ -1,0 +1,19 @@
+---
+# tasks file for terminal
+- name: Create .terminal
+  copy:
+    src: files/.bash_profile
+    dest: /Users/{{ terminal.install_user }}/.bash_profile
+    mode: 0644
+
+- name: Create .bashrc.d directory
+  file:
+    path: /Users/{{ terminal.install_user }}/.bashrc.d
+    state: directory
+    mode: 0775
+
+- name: Creates the .gitconfig file
+  template:
+    src: .gitconfig.j2
+    dest: /Users/{{ terminal.install_user }}/.gitconfig
+    mode: 0644
