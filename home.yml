@@ -7,5 +7,4 @@
 
   roles:
   - { role: homebrew, tags: [ 'homebrew' ] }
-  - { role: rvm, tags: [ 'rvm' ] }
   - { role: terminal, tags: [ 'terminal' ] }

@@ -5,26 +5,10 @@
   register: brew_check
 
 - name: Install homebrew
-  # command: ruby -v
-  # command: 'ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"'
   shell: '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
   remote_user: homesbrew.install_user
   # Only install if not installed
   when: brew_check.stdout.find('command not found') != -1
-
-# - name: "Start the Apache HTTPD Server"
-#   register: starthttpdout
-#   shell: "id"
-#
-# - debug:
-#     msg: "{{starthttpdout.stdout}}"
-#
-# - name: "var test"
-#   register: starthttpdout2
-#   shell: "echo '{{ homebrew.install_user }}'"
-#
-# - debug:
-#     msg: "{{starthttpdout2.stdout}}"
 
 - name: Add taps
   homebrew_tap:

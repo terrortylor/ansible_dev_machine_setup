@@ -6,8 +6,24 @@ homebrew:
     - homebrew/cask
     - caskroom/cask
   cask_apps:
-    - atom
+    # Preffered osx terminal
     - iterm2
+    # Messaging
     - slack
+    # Install ide's and text editors
+    - rubymine
+    - intellij-idea
+    - atom
+    # DevOps tools
+    - vagrant
+    # - virtualbox Can't lock to 5.2.28 so have to do this manually
+    # Browswer for better privacy
+    - brave
+    # Browser for work emails
+    # - google-chrome # Installed already
   packages:
-    - gnupg
+    # Ruby and rbenv for managing versions
+    - rbenv
+    - ruby
+    # CLI tools
+    - tree
