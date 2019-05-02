@@ -10,6 +10,7 @@ homebrew:
     - iterm2
     # Messaging
     - slack
+    - whatsapp
     # Install ide's and text editors
     - rubymine
     - intellij-idea
@@ -27,3 +28,5 @@ homebrew:
     - ruby
     # CLI tools
     - tree
+    # GoLang
+    - go

@@ -6,11 +6,11 @@
     dest: /Users/{{ terminal.install_user }}/.bash_profile
     mode: 0644
 
-- name: Create .bashrc.d directory
-  file:
-    path: /Users/{{ terminal.install_user }}/.bashrc.d
-    state: directory
-    mode: 0775
+- name: Copy .bashrc.d directory
+  copy:
+    src: files/.bashrc.d
+    dest: /Users/{{ terminal.install_user }}
+    mode: 0644
 
 - name: Creates the .gitconfig file
   template:
