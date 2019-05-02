@@ -8,21 +8,6 @@ homebrew:
   cask_apps:
     - atom
     - iterm2
+    - slack
   packages:
-    - gnupg #used for installing RVM
-
-# downloads: ~/.ansible-downloads/
-#
-# homebrew_installed_packages:
-# #  - atom
-#
-# homebrew_taps:
-#   - homebrew/core
-#   - homebrew/cask
-#   - caskroom/cask
-#
-# homebrew_cask_appdir: /Applications
-# homebrew_cask_apps:
-# #  - google-chrome
-# #  - slack
-#   - atom
+    - gnupg
