@@ -8,3 +8,4 @@
   roles:
   - { role: homebrew, tags: [ 'homebrew' ] }
   - { role: terminal, tags: [ 'terminal' ] }
+  - { role: npm, tags: [ 'npm' ] }
