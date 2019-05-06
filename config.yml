@@ -22,6 +22,8 @@ homebrew:
     - brave
     # Browser for work emails
     # - google-chrome # Installed already
+    # hexeditor
+    - '0xed'
   packages:
     # Ruby and rbenv for managing versions
     - rbenv
