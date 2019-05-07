@@ -1,6 +1,5 @@
 ---
 # defaults file for npm
 npm:
-  install_user: alex.tylor
   packages:
     global:

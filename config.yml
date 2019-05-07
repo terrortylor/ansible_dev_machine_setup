@@ -1,10 +1,16 @@
 ---
+terminal:
+  install_user: '{{ install_user }}'
+  git_user: '{{ git_user }}'
+  git_email: '{{ git_email }}'
 homebrew:
-  install_user: alex.tylor
+  install_user: '{{ install_user }}'
   taps:
     - homebrew/core
     - homebrew/cask
     - caskroom/cask
+    # Allow brew search for versions
+    - caskroom/versions
   cask_apps:
     # Preffered osx terminal
     - iterm2
@@ -24,6 +30,10 @@ homebrew:
     # - google-chrome # Installed already
     # hexeditor
     - '0xed'
+    # latest jdk, bit shit as no version control here
+    - java
+    # Android studio, install SDK though this
+    - android-studio
   packages:
     # Ruby and rbenv for managing versions
     - rbenv

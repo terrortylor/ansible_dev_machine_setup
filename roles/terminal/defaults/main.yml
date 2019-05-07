@@ -1,5 +1,6 @@
 ---
 # defaults file for terminal
 terminal:
-  install_user: alex.tylor
-  git_email: alex.tylor@e2x.co.uk
+  install_user:
+  git_user:
+  git_email:
