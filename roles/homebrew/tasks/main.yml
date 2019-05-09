@@ -6,7 +6,7 @@
 
 - name: Install homebrew
   shell: '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-  remote_user: homesbrew.install_user
+  remote_user: homebrew.install_user
   # Only install if not installed
   when: brew_check.stdout.find('command not found') != -1
 

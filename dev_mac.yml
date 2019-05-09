@@ -9,3 +9,4 @@
   - { role: homebrew, tags: [ 'homebrew' ] }
   - { role: terminal, tags: [ 'terminal' ] }
   - { role: npm, tags: [ 'npm' ] }
+  - { role: atom_packages, tags: [ 'atom_packages' ] }

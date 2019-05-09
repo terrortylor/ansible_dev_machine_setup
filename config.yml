@@ -51,3 +51,7 @@ npm:
   packages:
     global:
       - react-native-cli
+atom_packages:
+  install_user: '{{ install_user }}'
+  packages:
+    - seti-icons # File icons
