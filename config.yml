@@ -34,6 +34,7 @@ homebrew:
     - java
     # Android studio, install SDK though this
     - android-studio
+    - vnc-viewer
   packages:
     # Ruby and rbenv for managing versions
     - rbenv
