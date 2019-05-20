@@ -48,6 +48,8 @@ homebrew:
     - node
     # Watchman, facebooks tools for watching tools on the file system for node development
     - watchman
+    # Windows Remote Desktop Beta
+    - microsoft-remote-desktop-beta
 npm:
   packages:
     global:
