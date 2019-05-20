@@ -35,6 +35,8 @@ homebrew:
     # Android studio, install SDK though this
     - android-studio
     - vnc-viewer
+    # Windows Remote Desktop Beta
+    - microsoft-remote-desktop-beta
   packages:
     # Ruby and rbenv for managing versions
     - rbenv
@@ -48,8 +50,6 @@ homebrew:
     - node
     # Watchman, facebooks tools for watching tools on the file system for node development
     - watchman
-    # Windows Remote Desktop Beta
-    - microsoft-remote-desktop-beta
 npm:
   packages:
     global:
