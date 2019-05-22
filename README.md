@@ -1,8 +1,16 @@
-# OS X Setup
+# What am I?
+Ansible scripts for configuring dev workstations.
+Supporting:
+* OS X
+* Ubuntu (18.04)
+
+# Preperation
+As this is designed to run on both OS X and Ubuntu, there are two setup guides:
+
+## OS X Specific
 This is an Ansible project used to configure a mac used for development.
 Where possible homebrew is used as a package manager.
 
-# Pre-requisites
 Enable SSH:
 ```
 sudo systemsetup -setremotelogin on
@@ -11,6 +19,13 @@ sudo systemsetup -setremotelogin on
 Connect to instance as your user, accepting keys:
 ```
 ssh -o "StrictHostKeyChecking no" $USER@127.0.0.1
+```
+
+Additional: Install xcode
+Basically you need this to run the local git installation...
+So haveing checked this out, it's likely that you've already got it installed.
+```
+xcode-select --install
 ```
 
 Install pip, and anisble:
@@ -24,12 +39,23 @@ This was setup with:
 ansible 2.7.10
 ```
 
-Additional: Install xcode
-Basically you need this to run the local git installation...
-So haveing checked this out, it's likely that you've already got it installed.
+## Ubuntu
+Install git:
 ```
-xcode-select --install
+sudo apt-get install git
 ```
+
+Enable ssh:
+```
+sudo apt install openssh-server
+ssh -o "StrictHostKeyChecking no" $USER@127.0.0.1
+```
+
+Install Ansible:
+```
+sudo apt-get install ansible
+```
+
 
 Create a hosts file. There is an example host file called **hosts.example**. Copy this to **/etc/ansible/hosts** or use the **-i** flag to indicate where the hosts file is.
 
