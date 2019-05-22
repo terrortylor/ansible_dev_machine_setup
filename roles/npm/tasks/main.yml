@@ -2,6 +2,6 @@
 # tasks file for npm
 - name: Install npm global packages
   npm:
-    name: "{{ item.name | default(item) }}"
+    name: "{{ item }}"
     global: yes
   loop: "{{ npm.packages.global }}"

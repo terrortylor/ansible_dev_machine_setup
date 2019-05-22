@@ -1,19 +1,26 @@
 ---
 # tasks file for terminal
+
+- set_fact: home_dir="/home"
+  when: ansible_facts['os_family'] == "Debian"
+
+- set_fact: home_dir="/Users"
+  when: ansible_facts['os_family'] == "Darwin"
+
 - name: Create .terminal
   copy:
     src: files/.bash_profile
-    dest: /Users/{{ terminal.install_user }}/.bash_profile
+    dest: "{{ home_dir }}/{{ terminal.install_user }}/.bash_profile"
     mode: 0644
 
 - name: Copy .bashrc.d directory
   copy:
     src: files/.bashrc.d
-    dest: /Users/{{ terminal.install_user }}
+    dest: "{{ home_dir }}/{{ terminal.install_user }}"
     mode: 0644
 
 - name: Creates the .gitconfig file
   template:
     src: .gitconfig.j2
-    dest: /Users/{{ terminal.install_user }}/.gitconfig
+    dest: "{{ home_dir }}/{{ terminal.install_user }}/.gitconfig"
     mode: 0644

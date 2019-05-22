@@ -1,6 +1,6 @@
 ---
 # defaults file for terminal
 terminal:
-  install_user:
-  git_user:
-  git_email:
+  install_user: '{{ install_user }}'
+  git_user: '{{ git_user }}'
+  git_email: '{{ git_email }}'

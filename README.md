@@ -60,6 +60,12 @@ sudo apt-get install ansible
 Create a hosts file. There is an example host file called **hosts.example**. Copy this to **/etc/ansible/hosts** or use the **-i** flag to indicate where the hosts file is.
 
 # Configuration Management
+There are two playbooks:
+* dev_mac.yml
+* dev_ubuntu.yml
+
+Use the relevant playbook...
+
 Run the ansible playbook:
 ```
 ansible-playbook dev_mac.yml -K
@@ -73,9 +79,11 @@ ansible-playbook dev_mac.yml -K --tags homebrew
 ## Roles/Tags
 The following roles exists:
 
-* homebrew - installs a number of packages
+* homebrew - installs a number of packages for os x
+* snap_packages - installs a number of packages for Ubuntu
 * terminal - sets up dot files etc
 * npm - installs npm packages
+* atom_packages - installs plackages for atom
 
 ## config.yml
 This files is used to drive the configuration of the various roles.

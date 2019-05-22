@@ -1,0 +1,6 @@
+---
+# defaults file for snap_packages
+snap_packages:
+  packages:
+    classic:
+      - atom

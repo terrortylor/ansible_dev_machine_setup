@@ -3,3 +3,4 @@
 npm:
   packages:
     global:
+      - react-native-cli

@@ -1,5 +1,6 @@
 ---
 # defaults file for atom_packages
 atom_packages:
-  install_user:
+  install_user: '{{ install_user }}'
   packages:
+    - seti-icons # File icons

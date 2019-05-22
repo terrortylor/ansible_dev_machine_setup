@@ -1,7 +1,49 @@
 ---
 # defaults file for homebrew
-homebrew:
-  install_user:
+homebrew: # Mac package manager
+  install_user: '{{ install_user }}'
   taps:
+    - homebrew/core
+    - homebrew/cask
+    - caskroom/cask
+    # Allow brew search for versions
+    - caskroom/versions
   cask_apps:
+    # Preffered osx terminal
+    - iterm2
+    # Messaging
+    - slack
+    - whatsapp
+    # Install ide's and text editors
+    - rubymine
+    - intellij-idea
+    - atom
+    # DevOps tools
+    - vagrant
+    # - virtualbox Can't lock to 5.2.28 so have to do this manually
+    # Browswer for better privacy
+    - brave
+    # Browser for work emails
+    # - google-chrome # Installed already
+    # hexeditor
+    - '0xed'
+    # latest jdk, bit shit as no version control here
+    - java
+    # Android studio, install SDK though this
+    - android-studio
+    - vnc-viewer
+    # Windows Remote Desktop Beta
+    - microsoft-remote-desktop-beta
   packages:
+    # Ruby and rbenv for managing versions
+    - rbenv
+    - ruby
+    # CLI tools
+    - tree
+    # GoLang
+    - go
+    - dep
+    # NodeJS
+    - node
+    # Watchman, facebooks tools for watching tools on the file system for node development
+    - watchman
