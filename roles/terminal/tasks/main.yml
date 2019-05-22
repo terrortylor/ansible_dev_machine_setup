@@ -13,11 +13,19 @@
     dest: "{{ home_dir }}/{{ terminal.install_user }}/.bash_profile"
     mode: 0644
 
-- name: Copy .bashrc.d directory
+- name: Copy ubuntu .bashrc.d directory
   copy:
-    src: files/.bashrc.d
+    src: files/ubuntu-.bashrc.d
     dest: "{{ home_dir }}/{{ terminal.install_user }}"
     mode: 0644
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Copy OSX .bashrc.d directory
+  copy:
+    src: files/osx-.bashrc.d
+    dest: "{{ home_dir }}/{{ terminal.install_user }}"
+    mode: 0644
+  when: ansible_facts['os_family'] == "Darwin"
 
 - name: Creates the .gitconfig file
   template:
