@@ -8,6 +8,7 @@ homebrew: # Mac package manager
     - caskroom/cask
     # Allow brew search for versions
     - caskroom/versions
+    - spotify/public
   cask_apps:
     # Preffered osx terminal
     - iterm2
@@ -34,6 +35,7 @@ homebrew: # Mac package manager
     - vnc-viewer
     # Windows Remote Desktop Beta
     - microsoft-remote-desktop-beta
+    - spotify
   packages:
     # Ruby and rbenv for managing versions
     - rbenv
