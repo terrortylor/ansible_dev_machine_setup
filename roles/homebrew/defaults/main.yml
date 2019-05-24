@@ -23,9 +23,9 @@ homebrew: # Mac package manager
     - vagrant
     # - virtualbox Can't lock to 5.2.28 so have to do this manually
     # Browswer for better privacy
-    - brave
+    - brave-browser
     # Browser for work emails
-    # - google-chrome # Installed already
+    - google-chrome # Installed already
     # hexeditor
     - '0xed'
     # latest jdk, bit shit as no version control here
