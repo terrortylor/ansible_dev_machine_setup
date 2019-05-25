@@ -1,0 +1,12 @@
+---
+# tasks file for zsh
+
+- name: check if oh my zsh installed
+  command: ls ~/.oh-my-zsh
+  register: oh_my_zsh_installed
+  ignore_errors: yes
+  changed_when: false
+
+- name: Install oh_my_zsh
+  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  when: "'No such file or directory' in oh_my_zsh_installed.stderr"

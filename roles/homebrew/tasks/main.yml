@@ -3,6 +3,7 @@
 - name: Check if homebrew installed
   command: brew -v
   register: brew_check
+  changed_when: false
 
 - name: Install homebrew
   shell: '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'

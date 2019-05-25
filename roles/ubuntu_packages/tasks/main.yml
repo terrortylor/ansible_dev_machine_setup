@@ -1,13 +1,19 @@
 ---
-# tasks file for snap_packages
+# tasks file for ubuntu_packages
 - name: Install snap classic packages
   shell: >
     snap list | grep -E '^{{ item }}'
     && echo 'Already installed.'
     || snap install --classic '{{ item }}'
-  loop: "{{ snap_packages.packages.classic }}"
+  loop: "{{ snap_packages.classic }}"
   register: snap_result
   changed_when: "'Already installed.' not in snap_result.stdout"
+  become: yes
+
+- name: Install apt packages
+  apt:
+    name: "{{ item }}"
+  loop: "{{ apt_packages }}"
   become: yes
 
 # As of ansible 2.8 can do this...

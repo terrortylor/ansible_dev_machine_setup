@@ -1,0 +1,13 @@
+---
+# defaults file for ubuntu_packages
+snap_packages:
+  classic:
+    - atom
+    - slack
+apt_packages:
+  - zsh # zsh
+  - powerline # for zsh
+  - fonts-powerline # for zsh powerline
+  - curl # Wasn't installed OOTB?
+  - terminator # Preffered terminal
+  - remmina # Remote desktop app

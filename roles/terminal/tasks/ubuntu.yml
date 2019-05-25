@@ -1,0 +1,25 @@
+---
+# tasks file for ubuntu
+- set_fact: home_dir="/home"
+
+- name: Create .terminal
+  copy:
+    src: files/.bash_profile
+    dest: "{{ home_dir }}/{{ terminal.install_user }}/.bash_profile"
+    mode: 0644
+
+- name: Copy ubuntu .bashrc.d directory
+  copy:
+    src: files/ubuntu-.bashrc.d
+    dest: "{{ home_dir }}/{{ terminal.install_user }}"
+    mode: 0644
+
+- name: Ensure ~/.config/terminator directory exists
+  file:
+    path: "{{ home_dir }}/{{ terminal.install_user }}/.config/terminator"
+    state: directory
+
+- name: Download solarized terminator colours
+  get_url:
+    url: https://raw.githubusercontent.com/ghuntley/terminator-solarized/master/config
+    dest: "{{ home_dir }}/{{ terminal.install_user }}/.config/terminator/config"

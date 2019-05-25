@@ -5,4 +5,5 @@
   roles:
   - { role: terminal, tags: [ 'terminal' ] }
   - { role: atom_packages, tags: [ 'atom_packages' ] }
-  - { role: snap_packages, tags: [ 'snap_packages' ] }
+  - { role: ubuntu_packages, tags: [ 'ubuntu_packages' ] }
+  - { role: zsh, tags: [ 'zsh' ] }
