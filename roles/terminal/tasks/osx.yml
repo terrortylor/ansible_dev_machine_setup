@@ -11,7 +11,6 @@
     path: "~/.bashrc.d"
     state: directory
 
-
 - name: Copy OSX .bashrc.d directory
   copy:
     src: files/osx-.bashrc.d/

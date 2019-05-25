@@ -29,3 +29,9 @@
     src: files/.vimrc
     dest: "~/.vimrc"
     mode: 0644
+
+- name: Create .tmux.conf
+  copy:
+    src: files/tmux.conf
+    dest: "~/.tmux.conf"
+    mode: 0644
