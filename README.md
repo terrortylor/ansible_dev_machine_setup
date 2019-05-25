@@ -83,7 +83,7 @@ The following roles exists:
 * snap_packages - installs a number of packages for Ubuntu
 * terminal - sets up dot files etc
 * npm - installs npm packages
-* atom_packages - installs plackages for atom
+* atom - installs plackages for atom
 
 ## config.yml
 This files is used to drive the configuration of the various roles.
@@ -91,5 +91,5 @@ Each role has a *defaults/main.yml* file so roles can be lifted out, and example
 Modify packages etc here.
 
 # Stuff not automated (yet...?)
-## Android Dev
-To set up the Android SDK this is done via Android Studio as per [this link](https://facebook.github.io/react-native/docs/getting-started.html); depending on what SDK version is required.
+*  Android Dev : To set up the Android SDK this is done via Android Studio as per [this link](https://facebook.github.io/react-native/docs/getting-started.html); depending on what SDK version is required.
+* Atom theme UI and syntax highlighting preference
