@@ -10,7 +10,7 @@
 
 - name: Creates the .gitconfig file
   template:
-    src: .gitconfig.j2
+    src: gitconfig.j2
     dest: "~/.gitconfig"
     mode: 0644
 

@@ -14,7 +14,7 @@
 
 - name: Create zsh config file
   copy:
-    src: files/.zshrc
+    src: files/zshrc
     dest: "~/.zshrc"
     mode: 0644
 
@@ -22,3 +22,15 @@
 # https://github.com/remiprev/teamocil
 - gem:
     name: teamocil
+    user_install: false
+
+- name: Ensure ~/.teamocil directory exists
+  file:
+    path: "~/.teamocil"
+    state: directory
+
+- name: Copy ~/.teamocil directory
+  copy:
+    src: files/teamocil/
+    dest: "~/.teamocil"
+    mode: 0644

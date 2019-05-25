@@ -6,10 +6,15 @@
     dest: "~/.bash_profile"
     mode: 0644
 
+- name: Ensure ~/.bashrc.d directory exists
+  file:
+    path: "~/.bashrc.d"
+    state: directory
+
 - name: Copy ubuntu .bashrc.d directory
   copy:
-    src: files/ubuntu-.bashrc.d
-    dest: "~"
+    src: files/ubuntu-.bashrc.d/
+    dest: "~/.bashrc.d  "
     mode: 0644
 
 - name: Ensure ~/.config/terminator directory exists
