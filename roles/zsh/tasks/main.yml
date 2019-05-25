@@ -1,5 +1,6 @@
 ---
 # tasks file for zsh
+# Note that this assumes ZSH has been installed by either packages role
 
 - name: check if oh my zsh installed
   command: ls ~/.oh-my-zsh
@@ -10,3 +11,14 @@
 - name: Install oh_my_zsh
   shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   when: "'No such file or directory' in oh_my_zsh_installed.stderr"
+
+- name: Create zsh config file
+  copy:
+    src: files/.zshrc
+    dest: "~/.zshrc"
+    mode: 0644
+
+# Install teamocil for automating tmux sessions
+# https://github.com/remiprev/teamocil
+- gem:
+    name: teamocil

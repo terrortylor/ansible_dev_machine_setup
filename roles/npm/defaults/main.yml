@@ -1,6 +1,0 @@
----
-# defaults file for npm
-npm:
-  packages:
-    global:
-      - react-native-cli

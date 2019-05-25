@@ -1,9 +1,0 @@
-- name: Configure macbook
-  hosts: all
-  connection: local
-
-  roles:
-  - { role: terminal, tags: [ 'terminal' ] }
-  - { role: atom, tags: [ 'atom' ] }
-  - { role: ubuntu_packages, tags: [ 'ubuntu_packages' ] }
-  - { role: zsh, tags: [ 'zsh' ] }

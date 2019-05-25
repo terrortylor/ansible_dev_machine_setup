@@ -1,9 +1,9 @@
----
+packages---
 terminal:
   install_user: '{{ install_user }}'
   git_user: '{{ git_user }}'
   git_email: '{{ git_email }}'
-homebrew:
+packages:
   install_user: '{{ install_user }}'
   taps:
     - homebrew/core

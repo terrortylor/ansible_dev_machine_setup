@@ -1,5 +1,26 @@
 ---
-# defaults file for homebrew
+
+# Ubuntu pacakages
+snap_packages:
+  classic:
+    - atom
+    - slack
+apt_packages:
+  - zsh
+  - powerline # for zsh
+  - fonts-powerline # for zsh powerline
+  - curl # Wasn't installed OOTB?
+  - terminator # Preffered terminal
+  - remmina # Remote desktop app
+  - tmux
+
+# defaults file for npm
+npm:
+  packages:
+    global:
+      - react-native-cli
+
+# osx packages
 homebrew: # Mac package manager
   install_user: '{{ install_user }}'
   taps:

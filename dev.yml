@@ -3,7 +3,7 @@
   connection: local
 
   roles:
-  - { role: homebrew, tags: [ 'homebrew' ] }
+  - { role: packages, tags: [ 'packages' ] }
   - { role: terminal, tags: [ 'terminal' ] }
-  - { role: npm, tags: [ 'npm' ] }
   - { role: atom, tags: [ 'atom' ] }
+  - { role: zsh, tags: [ 'zsh' ] }
