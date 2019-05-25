@@ -10,19 +10,13 @@
   register: apm_result
   changed_when: "'Already installed.' not in apm_result.stdout"
 
-- set_fact: home_dir="/home"
-  when: ansible_facts['os_family'] == "Debian"
-
-- set_fact: home_dir="/Users"
-  when: ansible_facts['os_family'] == "Darwin"
-
 - name: Ensure ~/.atom directory exists
   file:
-    path: "{{ home_dir }}/{{ terminal.install_user }}/.atom"
+    path: "~/.atom"
     state: directory
 
 - name: Create atom config file
   copy:
     src: files/config.cson
-    dest: "{{ home_dir }}/{{ terminal.install_user }}/.atom/config.cson"
+    dest: "~/.atom/config.cson"
     mode: 0644

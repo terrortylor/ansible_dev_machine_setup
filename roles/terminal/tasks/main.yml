@@ -11,21 +11,21 @@
 - name: Creates the .gitconfig file
   template:
     src: .gitconfig.j2
-    dest: "{{ home_dir }}/{{ terminal.install_user }}/.gitconfig"
+    dest: "~/.gitconfig"
     mode: 0644
 
 - name: Ensure ~/.vim/colors directory exists
   file:
-    path: "{{ home_dir }}/{{ terminal.install_user }}/.vim/colors"
+    path: "~/.vim/colors"
     state: directory
 
 - name: Download solarized vim colours
   get_url:
     url: https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-    dest: "{{ home_dir }}/{{ terminal.install_user }}/.vim/colors/solarized.vim"
+    dest: "~/.vim/colors/solarized.vim"
 
 - name: Create .vimrc
   copy:
     src: files/.vimrc
-    dest: "{{ home_dir }}/{{ terminal.install_user }}/.vimrc"
+    dest: "~/.vimrc"
     mode: 0644

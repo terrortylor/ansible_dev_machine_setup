@@ -1,15 +1,13 @@
 ---
 # tasks file for osx
-- set_fact: home_dir="/Users"
-
 - name: Create .terminal
   copy:
     src: files/.bash_profile
-    dest: "{{ home_dir }}/{{ terminal.install_user }}/.bash_profile"
+    dest: "~/.bash_profile"
     mode: 0644
 
 - name: Copy OSX .bashrc.d directory
   copy:
     src: files/osx-.bashrc.d
-    dest: "{{ home_dir }}/{{ terminal.install_user }}"
+    dest: "~/."
     mode: 0644
