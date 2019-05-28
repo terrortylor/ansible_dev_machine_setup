@@ -8,30 +8,11 @@
   import_tasks: osx.yml
   when: ansible_facts['os_family'] == "Darwin"
 
+- name: Setup tmux settings
+  import_tasks: tmux.yml
+
 - name: Creates the .gitconfig file
   template:
     src: gitconfig.j2
     dest: "~/.gitconfig"
-    mode: 0644
-
-- name: Ensure ~/.vim/colors directory exists
-  file:
-    path: "~/.vim/colors"
-    state: directory
-
-- name: Download solarized vim colours
-  get_url:
-    url: https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-    dest: "~/.vim/colors/solarized.vim"
-
-- name: Create .vimrc
-  copy:
-    src: files/.vimrc
-    dest: "~/.vimrc"
-    mode: 0644
-
-- name: Create .tmux.conf
-  copy:
-    src: files/tmux.conf
-    dest: "~/.tmux.conf"
     mode: 0644

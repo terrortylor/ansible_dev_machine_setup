@@ -6,19 +6,22 @@ snap_packages:
     - atom
     - slack
 apt_packages:
-  - zsh
-  - powerline # for zsh
-  - fonts-powerline # for zsh powerline
   - curl # Wasn't installed OOTB?
   - terminator # Preffered terminal
   - remmina # Remote desktop app
   - tmux
+  - tree
 
 # defaults file for npm
 npm:
   packages:
     global:
       - react-native-cli
+
+# defaults file for gem
+gem:
+  packages:
+    - teamocil # for automating tmux sessions
 
 # osx packages
 homebrew: # Mac package manager
@@ -72,3 +75,4 @@ homebrew: # Mac package manager
     - watchman
     - jq
     - tmux
+    - ctags

@@ -1,0 +1,40 @@
+---
+# tasks file for vim
+- name: Ensure ~/workspace-personnal directory exists
+  file:
+    path: "~/.workspace-personnal"
+    state: directory
+
+# TODO: Fix this FFS
+# - name: checkout vim-environment
+#   git:
+#     repo: 'git@github.com:terrortylor/vim-environment.git'
+#     dest: "~/workspace-personnal/vim-environment"
+#     update: no
+#     key_file: "~/.ssh/id_rsa"
+#     # accept_hostkey: yes
+#   # become: no
+#   become_user: terminal.install_user
+
+# I don't like this but issue with using git above with permissions
+# However I don't want ansible to manage updating
+- name: Checkout my vim environment
+  shell: >
+    ls ~/workspace-personnal/vim-environment | grep 'README.md'
+    && echo 'Already checkedout'
+    || git clone git@github.com:terrortylor/vim-environment.git ~/workspace-personnal/vim-environment
+  remote_user: terminal.install_user
+  register: git_result
+  changed_when: "'Already checkedout' not in git_result.stdout"
+
+- name: Create symbolic link of .vim directory
+  file:
+    src: '~/workspace-personnal/vim-environment/vim'
+    dest: '~/.vim'
+    state: link
+
+- name: Create symbolic link of .vimrc directory
+  file:
+    src: '~/workspace-personnal/vim-environment/vimrc'
+    dest: '~/.vimrc'
+    state: link

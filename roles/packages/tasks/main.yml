@@ -11,3 +11,9 @@
     name: "{{ item }}"
     global: yes
   loop: "{{ npm.packages.global }}"
+
+- name: Install gem global
+  gem:
+    name: "{{ item }}"
+    user_install: false
+  loop: "{{ gem.packages }}"

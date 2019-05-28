@@ -1,10 +1,12 @@
 # What am I?
-Ansible scripts for configuring dev workstations.
-Supporting:
+Ansible scripts for configuring my dev workstations, which are the following:
 * OS X
 * Ubuntu (18.04)
 
-# Preperation
+As such there are a few things you may want to change/remove!
+* VIM - This will set up my vim environment from another [repository](https://github.com/terrortylor/vim-environment). To remove this take a look at the `external` role.
+
+# Preparation
 As this is designed to run on both OS X and Ubuntu, there are two setup guides:
 
 ## OS X Specific
@@ -56,8 +58,12 @@ Install Ansible:
 sudo apt-get install ansible
 ```
 
+## Create an ansible hosts file
 
 Create a hosts file. There is an example host file called **hosts.example**. Copy this to **/etc/ansible/hosts** or use the **-i** flag to indicate where the hosts file is.
+
+## SSH keys
+This script checks out a repository or two... and depends on your ssh keys being in place.
 
 # Configuration Management
 Run the ansible playbook:
@@ -75,13 +81,8 @@ The following roles exists:
 
 * packages - installs a number of packages for os x
 * terminal - sets up dot files etc
-* atom - installs plackages for atom
-* zsh - configures zsh
-
-## config.yml
-This files is used to drive the configuration of the various roles.
-Each role has a *defaults/main.yml* file so roles can be lifted out, and examples of the configuration structure is available.
-Modify packages etc here.
+* atom - installs packages for atom
+* external - checks out a number of external repositories
 
 # Stuff not automated (yet...?)
 *  Android Dev : To set up the Android SDK this is done via Android Studio as per [this link](https://facebook.github.io/react-native/docs/getting-started.html); depending on what SDK version is required.

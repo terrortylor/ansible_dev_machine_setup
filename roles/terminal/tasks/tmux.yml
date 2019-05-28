@@ -1,0 +1,19 @@
+---
+# tasks file for tmux
+- name: Create .tmux.conf
+  copy:
+    src: files/tmux.conf
+    dest: "~/.tmux.conf"
+    mode: 0644
+
+# Note that teamocil is installed in packages
+- name: Ensure ~/.teamocil directory exists
+  file:
+    path: "~/.teamocil"
+    state: directory
+
+- name: Copy ~/.teamocil directory
+  copy:
+    src: files/teamocil/
+    dest: "~/.teamocil"
+    mode: 0644

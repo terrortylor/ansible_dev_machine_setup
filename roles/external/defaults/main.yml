@@ -1,0 +1,4 @@
+---
+# defaults file for external
+external:
+  install_user: '{{ install_user }}'

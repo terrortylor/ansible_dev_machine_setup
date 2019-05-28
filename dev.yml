@@ -6,4 +6,4 @@
   - { role: packages, tags: [ 'packages' ] }
   - { role: terminal, tags: [ 'terminal' ] }
   - { role: atom, tags: [ 'atom' ] }
-  - { role: zsh, tags: [ 'zsh' ] }
+  - { role: external, tags: [ 'external' ] }
