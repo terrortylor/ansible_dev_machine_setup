@@ -22,3 +22,12 @@
 #     name: "{{ item.name | default(item) }}"
 #     classic: yes
 #   loop: "{{ snap_packages.packages.classic }}"
+
+# Set up local directory for global npm packages due to permissions
+- name: Ensure ~/.npm-global directory exists
+  file:
+    path: "~/.npm-global"
+    state: directory
+
+- name: configure npm to use path
+  shell: npm config set prefix '~/.npm-global'

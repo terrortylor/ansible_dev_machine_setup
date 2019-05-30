@@ -6,6 +6,7 @@ snap_packages:
     - atom
     - slack
 apt_packages:
+  - rbenv
   - npm
   - curl # Wasn't installed OOTB?
   - terminator # Preffered terminal
