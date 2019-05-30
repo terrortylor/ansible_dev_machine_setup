@@ -6,11 +6,13 @@ snap_packages:
     - atom
     - slack
 apt_packages:
+  - npm
   - curl # Wasn't installed OOTB?
   - terminator # Preffered terminal
   - remmina # Remote desktop app
   - tmux
   - tree
+  - neovim
 
 # defaults file for npm
 npm:
