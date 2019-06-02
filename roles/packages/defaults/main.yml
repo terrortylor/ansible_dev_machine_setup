@@ -61,6 +61,8 @@ homebrew: # Mac package manager
     - microsoft-remote-desktop-beta
     - spotify
   packages:
+    - gradle
+    - neovim
     # Ruby and rbenv for managing versions
     - rbenv
     - ruby
