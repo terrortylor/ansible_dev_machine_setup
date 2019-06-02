@@ -38,3 +38,14 @@
     src: '~/workspace-personnal/vim-environment/vimrc'
     dest: '~/.vimrc'
     state: link
+
+- name: Ensure ~/.config/nvim directory exists
+  file:
+    path: "~/.config/nvim"
+    state: directory
+
+- name: Create symbolic link of neovim config file
+  file:
+    src: '~/workspace-personnal/vim-environment/neovim-init.vim'
+    dest: '~/.config/nvim/init.vim'
+    state: link
