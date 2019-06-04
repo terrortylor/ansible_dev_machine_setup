@@ -14,6 +14,7 @@ apt_packages:
   - tmux
   - tree
   - neovim
+  - ack # better searching and used in vi
 
 # defaults file for npm
 npm:
@@ -81,3 +82,4 @@ homebrew: # Mac package manager
     - jq
     - tmux
     - ctags
+    - ack # better searching and used in vi

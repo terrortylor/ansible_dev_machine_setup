@@ -16,3 +16,9 @@
     src: gitconfig.j2
     dest: "~/.gitconfig"
     mode: 0644
+
+- name: Create symbolic link of .ackrc
+  file:
+    src: '{{ playbook_dir }}/roles/terminal/files/.ackrc'
+    dest: '~/.ackrc'
+    state: link
