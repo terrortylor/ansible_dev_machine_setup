@@ -84,6 +84,11 @@ The following roles exists:
 * atom - installs packages for atom
 * external - checks out a number of external repositories
 
+# Externals
+## vim and neovim
+Check out the [repository](https://github.com/terrortylor/vim-environment)
+tl;dr my vim/neovim config... currently using both vim and neovim ヘ（。□°）ヘ
+
 # Stuff not automated (yet...?)
 *  Android Dev : To set up the Android SDK this is done via Android Studio as per [this link](https://facebook.github.io/react-native/docs/getting-started.html); depending on what SDK version is required.
 * Atom theme UI and syntax highlighting preference

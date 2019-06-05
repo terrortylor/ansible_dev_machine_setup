@@ -1,5 +1,5 @@
 ---
-# tasks file for vim
+# tasks file for vim and nvim
 - name: Ensure ~/workspace-personnal directory exists
   file:
     path: "~/.workspace-personnal"
@@ -35,7 +35,7 @@
 
 - name: Create symbolic link of .vimrc directory
   file:
-    src: '~/workspace-personnal/vim-environment/vimrc'
+    src: '~/workspace-personnal/vim-environment/.vimrc'
     dest: '~/.vimrc'
     state: link
 
@@ -46,6 +46,17 @@
 
 - name: Create symbolic link of neovim config files
   file:
-    src: '~/workspace-personnal/vim-environment/nvim'
+    src: '~/workspace-personnal/vim-environment/nvim/config'
     dest: '~/.config/nvim'
+    state: link
+
+- name: Ensure ~/.local/share/nvim/site/pack directory exists
+  file:
+    path: "~/.local/share/nvim/site/pack"
+    state: directory
+
+- name: Create symbolic link of neovim plugins
+  file:
+    src: '~/workspace-personnal/vim-environment/nvim/plugins'
+    dest: '~/.local/share/nvim/site/pack/plugins'
     state: link
