@@ -31,3 +31,15 @@
 
 - name: configure npm to use path
   shell: npm config set prefix '~/.npm-global'
+
+# rbenv installed via apt returns a different set of versions
+# and 2.5.1 is not available, so install the old way
+
+- name: Install rbenv via script
+  remote_user: packages.install_user
+  shell: >
+    which rbenv && echo 'Already installed.' ||
+    curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
+  register: rbenv_result
+  changed_when: "'Already installed.' not in rbenv_result.stdout"
+  failed_when: rbenv_result.rc > 1

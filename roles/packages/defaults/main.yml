@@ -1,4 +1,6 @@
 ---
+packages:
+  install_user: '{{ install_user }}'
 
 # Ubuntu pacakages
 snap_packages:
@@ -6,7 +8,6 @@ snap_packages:
     - atom
     - slack
 apt_packages:
-  - rbenv
   - npm
   - curl # Wasn't installed OOTB?
   - terminator # Preffered terminal
@@ -22,14 +23,17 @@ npm:
     global:
       - react-native-cli
 
-# defaults file for gem
-gem:
-  packages:
-    - teamocil # for automating tmux sessions
+# configure ruby using rbenv
+ruby:
+  versions:
+    - 2.5.1
+  default: 2.5.1
+  gem:
+    packages:
+      - teamocil # for automating tmux sessions
 
 # osx packages
 homebrew: # Mac package manager
-  install_user: '{{ install_user }}'
   taps:
     - homebrew/core
     - homebrew/cask

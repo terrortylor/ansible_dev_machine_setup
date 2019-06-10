@@ -13,8 +13,23 @@
     global: yes
   loop: "{{ npm.packages.global }}"
 
+# Install the desired ruby version(s)
+- name: Install ruby versions
+  remote_user: packages.install_user
+  shell: >
+    rbenv versions | grep '{{ item }}'
+    && echo 'Already installed.' || rbenv install '{{ item }}'
+  loop: "{{ ruby.versions }}"
+  register: rbenv_result
+  changed_when: "'Already installed.' not in rbenv_result.stdout"
+
+- name: Set the global ruby version
+  shell: rbenv global "{{ ruby.default }}"
+
 - name: Install gem global
+  remote_user: packages.install_user
   gem:
     name: "{{ item }}"
     user_install: false
-  loop: "{{ gem.packages }}"
+    executable: "~/.rbenv/shims/gem"
+  loop: "{{ ruby.gem.packages }}"
