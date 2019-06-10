@@ -30,6 +30,7 @@ ruby:
   default: 2.5.1
   gem:
     packages:
+      - bundler
       - teamocil # for automating tmux sessions
 
 # osx packages
