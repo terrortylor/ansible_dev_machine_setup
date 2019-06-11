@@ -7,6 +7,7 @@ snap_packages:
   classic:
     - atom
     - slack
+    - rubymine
 apt_packages:
   - npm
   - curl # Wasn't installed OOTB?
