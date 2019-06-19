@@ -8,6 +8,7 @@ snap_packages:
     - atom
     - slack
     - rubymine
+    - intellij-idea-community
 apt_packages:
   - npm
   - curl # Wasn't installed OOTB?
