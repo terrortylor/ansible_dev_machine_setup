@@ -18,6 +18,7 @@ apt_packages:
   - tree
   - neovim
   - ack # better searching and used in vi
+  - golang-go
 
 # defaults file for npm
 npm:
