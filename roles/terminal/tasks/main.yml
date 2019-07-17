@@ -1,5 +1,11 @@
 ---
 # tasks file for terminal
+- name: Create a symbolic link for ~/.bash_profile
+  file:
+    src: '{{ playbook_dir }}/roles/terminal/files/.bash_profile'
+    dest: '~/.bash_profile'
+    state: link
+
 - name: Run ubuntu specific steps
   import_tasks: ubuntu.yml
   when: ansible_facts['os_family'] == "Debian"

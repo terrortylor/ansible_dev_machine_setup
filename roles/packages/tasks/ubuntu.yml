@@ -43,3 +43,10 @@
   register: rbenv_result
   changed_when: "'Already installed.' not in rbenv_result.stdout"
   failed_when: rbenv_result.rc > 1
+
+- name: Download go 1.12.7
+  unarchive:
+    src: https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
+    dest: /usr/local
+    remote_src: yes
+  become: yes
