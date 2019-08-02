@@ -17,7 +17,8 @@ apt_packages:
   - tmux
   - tree
   - neovim
-  - ack # better searching and used in vi
+  - ack # better searching and used in vim
+  - ctags # for vim
 
 # defaults file for npm
 npm:
