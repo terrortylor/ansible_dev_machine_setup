@@ -4,7 +4,7 @@ Ansible scripts for configuring my dev workstations, which are the following:
 * Ubuntu (18.04)
 
 As such there are a few things you may want to change/remove!
-* VIM - This will set up my vim environment from another [repository](https://github.com/terrortylor/vim-environment). To remove this take a look at the `external` role.
+* VIM - This will set up my neovim environment from another [repository](https://github.com/terrortylor/vim-environment). To remove this take a look at the `external` role.
 
 # Preparation
 As this is designed to run on both OS X and Ubuntu, there are two setup guides:
@@ -85,9 +85,9 @@ The following roles exists:
 * external - checks out a number of external repositories
 
 # Externals
-## vim and neovim
+## neovim
 Check out the [repository](https://github.com/terrortylor/vim-environment)
-tl;dr my vim/neovim config... currently using both vim and neovim ヘ（。□°）ヘ
+tl;dr my neovim config... I've removed vim config in favour of neovim config now ヘ（。□°）ヘ
 
 # Stuff not automated (yet...?)
 *  Android Dev : To set up the Android SDK this is done via Android Studio as per [this link](https://facebook.github.io/react-native/docs/getting-started.html); depending on what SDK version is required.

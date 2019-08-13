@@ -1,7 +1,0 @@
----
-# tasks file for osx
-- name: Create a symbolic link for ~/.bashrc.d
-  file:
-    src: '{{ playbook_dir }}/roles/terminal/files/ubuntu-.bashrc.d'
-    dest: '~/.bashrc.d'
-    state: link

@@ -27,18 +27,6 @@
   register: git_result
   changed_when: "'Already checkedout' not in git_result.stdout"
 
-- name: Create symbolic link of .vim directory
-  file:
-    src: '~/workspace-personnal/vim-environment/vim'
-    dest: '~/.vim'
-    state: link
-
-- name: Create symbolic link of .vimrc directory
-  file:
-    src: '~/workspace-personnal/vim-environment/.vimrc'
-    dest: '~/.vimrc'
-    state: link
-
 - name: Ensure ~/.config directory exists
   file:
     path: "~/.config"

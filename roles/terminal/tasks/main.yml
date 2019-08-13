@@ -2,17 +2,23 @@
 # tasks file for terminal
 - name: Create a symbolic link for ~/.bash_profile
   file:
-    src: '{{ playbook_dir }}/roles/terminal/files/.bash_profile'
+    src: '{{ playbook_dir }}/roles/terminal/files/bash_profile'
     dest: '~/.bash_profile'
+    state: link
+
+- name: Create a symbolic link for ~/.bashrc.d
+  file:
+    src: '{{ playbook_dir }}/roles/terminal/files/bashrc.d'
+    dest: '~/.bashrc.d'
     state: link
 
 - name: Run ubuntu specific steps
   import_tasks: ubuntu.yml
   when: ansible_facts['os_family'] == "Debian"
 
-- name: Run osx specific steps
-  import_tasks: osx.yml
-  when: ansible_facts['os_family'] == "Darwin"
+#- name: Run osx specific steps
+#  import_tasks: osx.yml
+#  when: ansible_facts['os_family'] == "Darwin"
 
 - name: Setup tmux settings
   import_tasks: tmux.yml
@@ -25,6 +31,6 @@
 
 - name: Create symbolic link of .ackrc
   file:
-    src: '{{ playbook_dir }}/roles/terminal/files/.ackrc'
+    src: '{{ playbook_dir }}/roles/terminal/files/ackrc'
     dest: '~/.ackrc'
     state: link
