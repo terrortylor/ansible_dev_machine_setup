@@ -32,3 +32,8 @@
     # install_options: "{{ item.install_options | default(omit) }}"
     state: present
   loop: "{{ homebrew.packages }}"
+
+- name: Install pip3 neovim upgrade
+  pip:
+    name: neovim
+    executable: pip3
