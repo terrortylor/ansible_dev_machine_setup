@@ -10,6 +10,21 @@
   changed_when: "'Already installed.' not in snap_result.stdout"
   become: yes
 
+- name: Setup additional apt keys
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  loop: "{{ apt_keys }}"
+  become: yes
+
+- name: Setup additional apt sources
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ apt_sources }}"
+  become: yes
+
 - name: Install apt packages
   apt:
     name: "{{ item }}"

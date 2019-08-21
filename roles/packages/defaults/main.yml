@@ -9,6 +9,8 @@ snap_packages:
     - slack
     - rubymine
     - intellij-idea-community
+    - kubectl
+    - google-cloud-sdk
 apt_packages:
   - npm
   - curl # Wasn't installed OOTB?
@@ -19,6 +21,17 @@ apt_packages:
   - neovim
   - ack # better searching and used in vim
   - ctags # for vim
+  - apt-transport-https # used for docker-ce
+  - ca-certificates # used for docker-ce
+  - curl # used for docker-ce
+  - software-properties-common # used for docker-ce
+  - docker-ce # used for docker-ce
+  - jq
+apt_keys:
+  - https://download.docker.com/linux/ubuntu/gpg # used for docker-ce
+apt_sources:
+  # The bionic bit should be refactered to be built from command: lsb_release -cs
+  - "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" # used for docker-ce
 
 # defaults file for npm
 npm:
