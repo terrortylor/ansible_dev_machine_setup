@@ -49,6 +49,11 @@ ruby:
       - bundler
       - teamocil # for automating tmux sessions
 
+# install go pakages
+go:
+  packages:
+    - golang.org/x/tools/gopls@latest
+
 # osx packages
 homebrew: # Mac package manager
   taps:

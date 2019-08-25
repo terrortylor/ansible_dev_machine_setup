@@ -33,3 +33,14 @@
     user_install: false
     executable: "~/.rbenv/shims/gem"
   loop: "{{ ruby.gem.packages }}"
+
+
+# Install the desired go packages
+- name: Install go packages
+  remote_user: packages.install_user
+  shell: >
+    which '{{ item }}' | grep '{{ item }}'
+    && echo 'Already installed.' || GO111MODULE=on go get '{{ item }}'
+  loop: "{{ go.packages }}"
+  register: gopkg_result
+  changed_when: "'Already installed.' not in gopkg_result.stdout"
