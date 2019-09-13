@@ -6,14 +6,8 @@
     dest: '~/.tmux.conf'
     state: link
 
-# Note that teamocil is installed in packages
-- name: Ensure ~/.teamocil directory exists
+- name: Create symbolic link of teamocil
   file:
-    path: "~/.teamocil"
-    state: directory
-
-- name: Copy ~/.teamocil directory
-  copy:
-    src: files/teamocil/
-    dest: "~/.teamocil"
-    mode: 0644
+    src: '{{ playbook_dir }}/roles/terminal/files/teamocil'
+    dest: '~/.teamocil'
+    state: link

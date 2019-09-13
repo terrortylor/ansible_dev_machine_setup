@@ -1,0 +1,10 @@
+windows:
+  - name: Daily
+    root: ~
+    layout: 0b22,211x56,0,0{170x56,0,0,0,40x56,171,0[40x8,171,0,9,40x7,171,9,12,40x39,171,17,13]}
+    panes:
+      - cd ~/workspace/notes; nvim notes.md
+      - while true; do clear; cal; sleep 43200; done
+      - gcal-agenda-today
+      - gcal-agenda-this-week
+
