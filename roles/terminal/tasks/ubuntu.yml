@@ -5,7 +5,8 @@
     path: "~/.config/terminator"
     state: directory
 
-- name: Download solarized terminator colours
-  get_url:
-    url: https://raw.githubusercontent.com/ghuntley/terminator-solarized/master/config
-    dest: "~/.config/terminator/config"
+- name: Create symbolic link of terminator.config
+  file:
+    src: '{{ playbook_dir }}/roles/terminal/files/terminator.config'
+    dest: '~/.config/terminator/config'
+    state: link
