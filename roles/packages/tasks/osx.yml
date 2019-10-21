@@ -33,7 +33,7 @@
     state: present
   loop: "{{ homebrew.packages }}"
 
-- name: Install pip3 neovim upgrade
+- name: Install pip packages
   pip:
-    name: neovim
+    name: vim-vint
     executable: pip3

@@ -48,3 +48,9 @@
     src: '~/workspace-personnal/vim-environment/nvim/plugins'
     dest: '~/.local/share/nvim/site/pack/plugins'
     state: link
+
+- name: Create symbolic link of markdownlint-cli config
+  file:
+    src: '~/workspace-personnal/vim-environment/nvim/config/efm-langserver-config.yaml'
+    dest: '~/.config/efm-langserver/config.yaml'
+    state: link

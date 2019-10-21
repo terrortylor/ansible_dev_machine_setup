@@ -1,4 +1,4 @@
-# Run target specfic first as may do setup for following module calls
+# Run target specfic first as may do setup for following module calls - name: Install ubuntu packages
 - name: Install ubuntu packages
   import_tasks: ubuntu.yml
   when: ansible_facts['os_family'] == "Debian"
@@ -36,11 +36,26 @@
 
 
 # Install the desired go packages
-- name: Install go packages
+- name: Install go packages (GO111MODULE)
   remote_user: packages.install_user
   shell: >
     which '{{ item }}' | grep '{{ item }}'
     && echo 'Already installed.' || GO111MODULE=on go get '{{ item }}'
+  loop: "{{ go.packages_go111module }}"
+  register: gopkg_result
+  changed_when: "'Already installed.' not in gopkg_result.stdout"
+
+- name: Install go packages
+  remote_user: packages.install_user
+  shell: >
+    which '{{ item }}' | grep '{{ item }}'
+    && echo 'Already installed.' || go get '{{ item }}'
   loop: "{{ go.packages }}"
   register: gopkg_result
   changed_when: "'Already installed.' not in gopkg_result.stdout"
+
+- name: Install pip packages
+  pip:
+    name: "{{ item }}"
+    executable: pip
+  loop: "{{ pip.packages }}"
