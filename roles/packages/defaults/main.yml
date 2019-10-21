@@ -19,18 +19,14 @@ apt_packages:
   - remmina # Remote desktop app
   - tmux
   - tree
-  - neovim
-  - ack # better searching and used in vim
-  - ctags # for vim
   - apt-transport-https # used for docker-ce
   - ca-certificates # used for docker-ce
   - curl # used for docker-ce
   - software-properties-common # used for docker-ce
   - docker-ce # used for docker-ce
-  - docker-compose weird this wasn't included
+  - docker-compose #weird this wasn't included
   - jq
   - python-pip # note currently using 2.7 on ubuntu, osx is using 3
-  - yamllint   # used by efm-langserver, vim for linting yaml
   - gcalcli # used to manage google calendar from cli
 apt_keys:
   - https://download.docker.com/linux/ubuntu/gpg # used for docker-ce
@@ -43,13 +39,9 @@ npm:
   packages:
     global:
       - react-native-cli
-      - markdownlint-cli # used for linting markdown by vim
 
 pip:
-  packages:
-    - vim-vint # used for linting vim
-    - typing   # used by vim-vint
-    - pathlib  # used by vim-vint
+  packages: []
 
 # configure ruby using rbenv
 ruby:
@@ -64,10 +56,8 @@ ruby:
 # install go pakages
 go:
   gobin: workspace/oxy-go/bin
-  packages:
-    - github.com/mattn/efm-langserver # general purpose LSP for formatting external calls, used by vim
-  packages_go111module:
-    - golang.org/x/tools/gopls@latest # go's LSP used by vim
+  packages: []
+  packages_go111module: []
 
 # osx packages
 homebrew: # Mac package manager
@@ -107,7 +97,6 @@ homebrew: # Mac package manager
     - spotify
   packages:
     - gradle
-    - neovim
     # Ruby and rbenv for managing versions
     - rbenv
     - ruby
@@ -122,5 +111,3 @@ homebrew: # Mac package manager
     - watchman
     - jq
     - tmux
-    - ctags
-    - ack # better searching and used in vi

@@ -1,4 +1,0 @@
----
-# tasks file for external
-- name: Configure vim environment
-  import_tasks: vim.yml
