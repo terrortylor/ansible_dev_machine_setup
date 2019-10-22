@@ -10,7 +10,7 @@ alias dcd="docker-compose down"
 # Function to search ~/.bashrc.d for any aliases based on a key
 # word; it then prints out the alias name and value on seperate
 # lines to aid in readability.
-function find-alias {
+function find-alias-function {
   if [ "$#" -ne 1 ]; then
     echo "Illegal number of parameters, expected 1 got $#"
     return 0
