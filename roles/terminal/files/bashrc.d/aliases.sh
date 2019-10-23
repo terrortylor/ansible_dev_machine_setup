@@ -2,11 +2,6 @@
 alias vim=nvim
 alias vi=nvim
 
-# docker-compose docker
-alias dcu="docker-compose up -d"
-alias dcul="docker-compose up && docker-compose logs -f"
-alias dcd="docker-compose down"
-
 # Function to search ~/.bashrc.d for any aliases based on a key
 # word; it then prints out the alias name and value on seperate
 # lines to aid in readability.
