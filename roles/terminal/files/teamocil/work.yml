@@ -5,6 +5,6 @@ windows:
     panes:
       - cd ~/workspace/notes; nvim notes.md
       - while true; do clear; cal; sleep 43200; done
-      - gcal-agenda-today
-      - gcal-agenda-this-week
+      - gcal_agenda_today
+      - gcal_agenda_this_week
 
