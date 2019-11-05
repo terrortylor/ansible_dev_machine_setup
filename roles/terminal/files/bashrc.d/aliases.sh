@@ -3,7 +3,7 @@ alias vim=nvim
 alias vi=nvim
 
 # Create directory and move into it
-function mkcd {
+mkcd() {
   if [ -d "${1}" ]; then
     echo "Directory already exists"
   else
@@ -15,7 +15,7 @@ function mkcd {
 # Function to search ~/.bashrc.d for any aliases based on a key
 # word; it then prints out the alias name and value on seperate
 # lines to aid in readability.
-function find_alias_function {
+find_alias_function() {
   if [ "$#" -ne 1 ]; then
     echo "Illegal number of parameters, expected 1 got $#"
     return 0

@@ -1,6 +1,6 @@
 alias tmuxwork="tmux at -t work"
 
-function tmux_open_session() {
+tmux_open_session() {
   if [ "$#" -ne 1 ]; then
     echo "Illegal number of parameters, expected 1 got $#"
     echo -e "Usage:\n${FUNCNAME[0]} <SESSION>"
