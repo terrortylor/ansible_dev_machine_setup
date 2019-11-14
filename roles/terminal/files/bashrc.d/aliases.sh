@@ -42,5 +42,5 @@ find_alias_function() {
       NC='\033[0m' # No Color
       printf "function ${RED}${function_name}${NC}\n\tFile: ${file_name}\n"
     fi
-  done < <( grep -in "^function.*${1}.*" ~/.bashrc.d/* )
+  done < <( grep -in "^.*${1}.*()\s{" ~/.bashrc.d/* )
 }
