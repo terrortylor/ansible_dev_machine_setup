@@ -76,7 +76,7 @@ homebrew: # Mac package manager
     - whatsapp
     # Install ide's and text editors
     - rubymine
-    - intellij-idea-community
+    - intellij-idea-ce
     - atom
     # DevOps tools
     - vagrant
