@@ -52,6 +52,7 @@ ruby:
     packages:
       - bundler
       - teamocil # for automating tmux sessions
+      - git-up
 
 # install go pakages
 go:
