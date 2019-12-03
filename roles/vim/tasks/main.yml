@@ -21,7 +21,7 @@
   shell: >
     ls ~/workspace-personnal/vim-environment | grep 'README.md'
     && echo 'Already checkedout'
-    || git clone git@github.com:terrortylor/vim-environment.git ~/workspace-personnal/vim-environment
+    || git clone --recursive https://github.com/terrortylor/vim-environment.git ~/workspace-personnal/vim-environment
   remote_user: terminal.install_user
   register: git_result
   changed_when: "'Already checkedout' not in git_result.stdout"
