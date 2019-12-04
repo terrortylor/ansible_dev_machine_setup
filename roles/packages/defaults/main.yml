@@ -28,6 +28,8 @@ apt_packages:
   - jq
   - python-pip # note currently using 2.7 on ubuntu, osx is using 3
   - gcalcli # used to manage google calendar from cli
+  - anki
+  - python3-distutils # required by anki
 apt_keys:
   - https://download.docker.com/linux/ubuntu/gpg # used for docker-ce
 apt_sources:

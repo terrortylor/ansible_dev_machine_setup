@@ -126,3 +126,5 @@ then
 		fi
 	done
 fi
+
+complete -C /usr/local/bin/terraform terraform

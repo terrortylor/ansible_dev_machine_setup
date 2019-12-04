@@ -14,7 +14,7 @@ dra() {
   docker rm $(docker ps -a -q)
 }
 
-dra() {
+dri() {
   echo 'Removing all images'
   docker rmi -f $(docker images -q)
 }

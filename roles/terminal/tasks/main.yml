@@ -12,6 +12,12 @@
     dest: '~/.bashrc.d'
     state: link
 
+- name: Create a symbolic link for ~/bin
+  file:
+    src: '{{ playbook_dir }}/roles/terminal/files/bin'
+    dest: '~/bin'
+    state: link
+
 - name: Run ubuntu specific steps
   import_tasks: ubuntu.yml
   when: ansible_facts['os_family'] == "Debian"
@@ -34,3 +40,10 @@
     src: '{{ playbook_dir }}/roles/terminal/files/ackrc'
     dest: '~/.ackrc'
     state: link
+
+- name: Create a symbolic ~/.config/git for hooks
+  file:
+    src: '{{ playbook_dir }}/roles/terminal/files/git'
+    dest: '~/.config/git'
+    state: link
+

@@ -14,6 +14,7 @@ vim:
     packages:
       global:
         - markdownlint-cli # used for linting markdown by vim
+        - neovim           # required by coc, node.js module
 
   pip:
     packages:

@@ -8,3 +8,4 @@
   - { role: atom, tags: [ 'atom' ] }
   - { role: vim, tags: [ 'vim' ] }
   - { role: sdkman, tags: [ 'sdkman' ] }
+  - { role: i3-gaps, tags: [ 'i3' ] }
