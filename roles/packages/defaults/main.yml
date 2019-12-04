@@ -88,8 +88,6 @@ homebrew: # Mac package manager
     # - google-chrome # Installed already
     # hexeditor
     - '0xed'
-    # See here for details on jdk8 https://stackoverflow.com/questions/24342886/how-to-install-java-8-on-mac
-    - adoptopenjdk/openjdk/adoptopenjdk8
     # Android studio, install SDK though this
     - android-studio
     - vnc-viewer
