@@ -1,14 +1,14 @@
 # tasks file for vim and nvim
-- name: Ensure ~/workspace-personnal directory exists
+- name: Ensure ~/personnal-workspace directory exists
   file:
-    path: "~/.workspace-personnal"
+    path: "~/.personnal-workspace"
     state: directory
 
 # TODO: Fix this FFS
 # - name: checkout vim-environment
 #   git:
 #     repo: 'git@github.com:terrortylor/vim-environment.git'
-#     dest: "~/workspace-personnal/vim-environment"
+#     dest: "~/personnal-workspace/vim-environment"
 #     update: no
 #     key_file: "~/.ssh/id_rsa"
 #     # accept_hostkey: yes
@@ -19,9 +19,9 @@
 # However I don't want ansible to manage updating
 - name: Checkout my vim environment
   shell: >
-    ls ~/workspace-personnal/vim-environment | grep 'README.md'
+    ls ~/personnal-workspace/vim-environment | grep 'README.md'
     && echo 'Already checkedout'
-    || git clone --recursive https://github.com/terrortylor/vim-environment.git ~/workspace-personnal/vim-environment
+    || git clone --recursive https://github.com/terrortylor/vim-environment.git ~/personnal-workspace/vim-environment
   remote_user: terminal.install_user
   register: git_result
   changed_when: "'Already checkedout' not in git_result.stdout"
@@ -33,7 +33,7 @@
 
 - name: Create symbolic link of neovim config files
   file:
-    src: '~/workspace-personnal/vim-environment/nvim/config'
+    src: '~/personnal-workspace/vim-environment/nvim/config'
     dest: '~/.config/nvim'
     state: link
 
@@ -44,13 +44,13 @@
 
 - name: Create symbolic link of neovim plugins
   file:
-    src: '~/workspace-personnal/vim-environment/nvim/plugins'
+    src: '~/personnal-workspace/vim-environment/nvim/plugins'
     dest: '~/.local/share/nvim/site/pack/plugins'
     state: link
 
 - name: Create symbolic link of markdownlint-cli config
   file:
-    src: '~/workspace-personnal/vim-environment/nvim/config/efm-langserver-config.yaml'
+    src: '~/personnal-workspace/vim-environment/nvim/config/efm-langserver-config.yaml'
     dest: '~/.config/efm-langserver/config.yaml'
     state: link
 - name: Install ubuntu packages
