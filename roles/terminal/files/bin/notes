@@ -6,7 +6,7 @@
 #
 # Arguement handling half inched from: https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 
-NOTE_PATH="${HOME}/workspace/notes"
+NOTE_PATH="${HOME}/personnal-workspace/notes"
 DEBUG=0
 LIST=0
 

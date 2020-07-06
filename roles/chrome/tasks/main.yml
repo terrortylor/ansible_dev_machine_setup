@@ -1,0 +1,19 @@
+---
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+
+- name: "Install fedora-workstation-repositories"
+  package:
+    name: "fedora-workstation-repositories"
+  when: "'fedora-workstation-repositories' not in ansible_facts.packages"
+  tags:
+    - chrome
+
+- name: "Install google-chrome"
+  dnf:
+    name: "google-chrome-stable"
+    enablerepo: "google-chrome"
+  when: "'google-chrome-stable' not in ansible_facts.packages"
+  tags:
+    - chrome

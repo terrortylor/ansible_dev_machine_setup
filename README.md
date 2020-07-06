@@ -1,17 +1,46 @@
 # What am I
 
-Ansible scripts for configuring my dev workstations, which are the following:
+Ansible scripts for configuring my development workstations, which are the following:
 
 * OS X
 * Ubuntu (18.04)
 
 As such there are a few things you may want to change/remove!
 
-* VIM - This will set up my neovim environment from another
+* VIM - This will set up my Neovim environment from another
   [repository](https://github.com/terrortylor/vim-environment). To remove this
   take a look at the `vim` role.
 
+## Tests
+
+### Integration Tests
+
+Kitchen is used as the test runner, with vagrant as the provisioner and inspec as the verifier.
+
+To run the tests you'll need to set up the ruby environment:
+
+```bash
+rbenv init
+bundle install
+```
+
+To run tests call kitchen via bundle:
+
+```bash
+bundle exec kitchen list
+bundle exec kitchen verify <SUITE_NAME>
+```
+
 ## Preparation
+
+### RUBY
+This project uses rbenv and expects bundler to be installed.
+To install dependencies:
+
+```sh
+rbenv init
+bundle install
+```
 
 As this is designed to run on both OS X and Ubuntu, there are two setup guides:
 
@@ -133,3 +162,10 @@ Currently this has support (on some level) for:
 * Android Dev : To set up the Android SDK this is done via Android Studio as
   per [this link](https://facebook.github.io/react-native/docs/getting-started.html);
   depending on what SDK version is required.
+
+
+  [good example code](https://github.com/gaelL/kitchen_ci/tree/master/playbook_test)
+  [testinfra molecue example](https://www.jeffgeerling.com/blog/2018/testing-your-ansible-roles-molecule)
+  [a nice ansible code example](https://github.com/shudarshon/ansible_role/blob/master/roles/jenkins/tasks/main.yml)
+  [anibsle and molecue and goss](https://medium.com/@chaks/testing-ansible-role-with-molecule-docker-testinfra-goss-part-1-c0277b748b63)
+

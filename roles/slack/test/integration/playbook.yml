@@ -1,0 +1,5 @@
+---
+- name: slack
+  hosts: all
+  roles:
+  - { role: slack }

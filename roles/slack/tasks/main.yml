@@ -1,0 +1,11 @@
+---
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+
+- name: "Install slack"
+  yum:
+    name: "https://downloads.slack-edge.com/linux_releases/slack-{{ slack.version }}.x86_64.rpm"
+  when: "'slack' not in ansible_facts.packages"
+  tags:
+    - slack

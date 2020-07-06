@@ -1,0 +1,24 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  roles_path: ../../roles
+  playbook: test/integration/playbook.yml
+  ansible_inventory: test/integration/hosts.ini
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: generic/fedora32
+    provisioner:
+      extra_vars:
+        # This is used by the kitchen role, sole purpose is to sync this repository to vm
+        home_path: '/home/'
+        # as role not running locally we need to set this value, it's set in the defaults as role_path otherwise
+        roles_path_exposed: '/home/vagrant/personnal-workspace/ansible/roles/dotfiles'
+
+suites:
+  - name: fedora

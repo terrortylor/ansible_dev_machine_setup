@@ -1,0 +1,6 @@
+---
+# If not running locally then set value so as not linked from tmp
+roles_path_exposed: "{{ role_path }}"
+username: "vagrant"
+git_user: "vagrant"
+git_email: "vagrant@vagrant.com"

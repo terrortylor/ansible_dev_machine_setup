@@ -1,0 +1,18 @@
+# This is simply used when testing with kitchen to copy roles to expected location, useful for checking symlinks etc
+---
+- name: Creates the ansible directory
+  file:
+    path: ~/personnal-workspace/ansible
+    state: directory
+  become: true
+  become_user: vagrant
+
+  # The copy task is slow when you have many files, using sync is much faster
+- name: Copy ansible code to target
+  synchronize:
+    src: "{{ role_path }}/../../roles"
+    dest: "{{ home_path }}/vagrant/personnal-workspace/ansible/"
+    # Hack to set user as become isn't honoured
+    ssh_args:
+      - "-l vagrant"
+      - "--exclude=**/.kitchen"

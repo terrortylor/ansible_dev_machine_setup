@@ -1,0 +1,6 @@
+---
+- name: dotfiles
+  hosts: all
+  roles:
+  - { role: kitchen }
+  - { role: dotfiles }

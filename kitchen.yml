@@ -1,0 +1,28 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  roles_path: roles
+  playbook: test/integration/development-playbook.yml
+  ansible_inventory: test/integration/hosts
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: generic/fedora32
+
+suites:
+  - name: development-fedora
+    excludes:
+      - ubuntu/bionic64
+    provisioner:
+      # This isn't ractually required
+      tags:
+        - chef
+      ansible_inventory: test/hosts
+    verifier:
+      patterns:
+      - roles/chef-workstation/test/integration/fedora/default_spec.rb

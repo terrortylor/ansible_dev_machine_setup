@@ -1,7 +1,0 @@
----
-# defaults file for atom
-atom:
-  install_user: '{{ install_user }}'
-  packages:
-    - seti-icons # File icons
-    - block-select

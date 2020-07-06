@@ -1,0 +1,13 @@
+---
+- name: remote
+  hosts: remote
+  roles:
+  - { role: chef-workstation }
+  - { role: ssh }
+  - { role: chrome }
+  - { role: dotfiles }
+  # - { role: slack }
+  vars:
+    username: 'alextylor'
+    roles_path_exposed: '/home/alextylor/personnal-workspace/ansible/roles/dotfiles'
+

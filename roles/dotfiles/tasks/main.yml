@@ -1,0 +1,40 @@
+---
+- name: Ensure the following is run for specific user
+  block:
+
+  - name: Symlink .inputrc
+    file:
+      src: '{{ roles_path_exposed }}/files/inputrc'
+      dest: '~/.inputrc'
+      state: link
+
+  - stat:
+      path: '~/.bashrc'
+    register: stat_result
+  - name: Remove .bashrc if exists and symlink
+    file:
+      path: '~/.bashrc'
+      state: absent
+    when: stat_result.stat.exists is defined and not stat_result.stat.islnk
+
+  - name: Create a symbolic link for ~/.bashrc
+    file:
+      src: '{{roles_path_exposed}}/files/bashrc'
+      dest: '~/.bashrc'
+      state: link
+
+  - name: Create a symbolic link for ~/.bashrc.d
+    file:
+      src: '{{roles_path_exposed}}/files/bashrc.d'
+      dest: '~/.bashrc.d'
+      state: link
+
+  - name: Setup git settings
+    import_tasks: git.yml
+
+  - name: Setup tmux settings
+    import_tasks: tmux.yml
+
+  # TODO can this be moved to the include level in main.yml?
+  become: true
+  become_user: "{{username}}"

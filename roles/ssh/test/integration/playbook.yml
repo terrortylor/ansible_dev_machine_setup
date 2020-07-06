@@ -1,0 +1,5 @@
+---
+- name: ssh
+  hosts: all
+  roles:
+  - { role: ssh }

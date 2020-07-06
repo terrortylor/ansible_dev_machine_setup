@@ -128,3 +128,10 @@ then
 fi
 
 complete -C /usr/local/bin/terraform terraform
+
+# OSX bash completion
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/alex.tylor/.sdkman"
+[[ -s "/Users/alex.tylor/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alex.tylor/.sdkman/bin/sdkman-init.sh"
