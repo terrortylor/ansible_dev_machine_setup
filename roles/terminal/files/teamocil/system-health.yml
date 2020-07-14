@@ -1,6 +1,0 @@
-windows:
-  - name: system-health
-    layout: even-horizontal
-    panes:
-      - top
-      - df -h
