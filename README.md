@@ -33,6 +33,7 @@ bundle exec kitchen verify <SUITE_NAME>
 There are tests for most roles (run from within role directory), and root level test to call all roles.
 
 **Requirements**
+
 This project uses rbenv and expects bundler to be installed.
 To install dependencies:
 
@@ -41,10 +42,14 @@ rbenv init
 bundle install
 ```
 
+Linting can then be carried out in the `ansible` kitchen instance, there is no
+actual dependency to have ansible installed for development.
+
 ## Expectations
 
 **File Structure**
-The tets use a role called `kitchen` which is used to set up a kitchen test
+
+Some tests use a role called `kitchen` which is used to set up a kitchen test
 with files to allow the role being tested to do things like symlinking.
 
 Any test files/dummy folders live within the role themselves, usually under
@@ -55,6 +60,7 @@ already exist, such as the ansible and vim-environment. I decided to manage
 these separately as it fit my use case.
 
 **Run as root**
+
 These role expect to be run as root, and then become the user specified as
 required. If you run this as a named user, ensure that you use the `--become`
 flag.
@@ -84,18 +90,19 @@ To limit to a particular tag use the `--tags TAG` flag.
 
 ## Other...
 
-My old scripts became cumbersome and as they were not tested using them to
-provision multiple OS became a chore. As such I've taken the verbose role
+My old scripts became cumbersome, and as they were not tested, using them to
+provision multiple OSs became a chore. As such I've taken the more verbose role
 route this time, scrapping old scripts and starting afresh with kitchen as the
 test runner.
 
-I've tried to script defensively, and for speed... So there are some slightly
-odd decisions. Ansible would not be my first choice of tooling but it fit the
-bill.
+I've tried to script defensively, and for speed...  Ansible would not be my
+first choice of tooling but it fit the bill.
 
-The role `dotfiles` is fairly self explanatory, but I've separated by nvim
+The role `dotfiles` is fairly self explanatory, but I've separated my nvim
 environment config for ease of having it in multiple locations (work machine,
-phone etc)
+phone etc), this can be found in another one of my repositories.
+The `nvim` role is used to set up file paths, and external tool dependencies
+used by nvim.
 
 ## Old Versions
 
