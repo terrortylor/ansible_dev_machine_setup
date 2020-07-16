@@ -7,20 +7,20 @@
 # Used to build headers for virtualbox, required by kitchen
 - name: "Install virtual box headers required packages"
   package:
-    name: "{{item}}"
+    name: "{{ item }}"
   when: item not in ansible_facts.packages
   loop:
     - gcc
     - make
     - perl
 
-
 - name: "Install vagrant version: {{ vagrant.version }}"
   package:
     name: "vagrant-{{ vagrant.version }}"
   when: "'vagrant' not in ansible_facts.packages"
 
-- stat:
+- name: Capture stat of virtualbox repository file
+  stat:
     path: "/etc/yum.repos.d/virtualbox.repo"
   register: virtualbox_repo
 

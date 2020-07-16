@@ -1,7 +1,9 @@
 ---
-- fail:
+- name: Fail if username is empty to prevent become falling back on root
+  fail:
     msg: "Username is empty"
-  when: username == ""
+  # Pipe to length, if zero (empty) then fail
+  when: username | length == 0
 
 - name: Gather the rpm package facts
   package_facts:
@@ -21,16 +23,16 @@
 - name: Ensure the following is run for specific user
   block:
 
-  - name: "Ensure {{home_path}}/{{username}}/.config directory exists"
+  - name: "Ensure {{ home_path }}/{{ username }}/.config directory exists"
     file:
-      path: "{{home_path}}/{{username}}/.config"
+      path: "{{ home_path }}/{{ username }}/.config"
       state: directory
 
   - name: Create symbolic link of neovim config files
     file:
-      src: '{{workspace_home}}/vim-environment'
-      dest: '{{home_path}}/{{username}}/.config/nvim'
+      src: '{{ workspace_home }}/vim-environment'
+      dest: '{{ home_path }}/{{ username }}/.config/nvim'
       state: link
 
   become: true
-  become_user: "{{username}}"
+  become_user: "{{ username }}"

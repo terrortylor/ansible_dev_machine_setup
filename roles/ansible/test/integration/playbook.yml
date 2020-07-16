@@ -1,0 +1,6 @@
+---
+- name: github_clone
+  hosts: all
+  roles:
+  - { role: kitchen }
+  - { role: ansible }

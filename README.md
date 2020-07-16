@@ -2,6 +2,16 @@
 
 Ansible scripts for configuring my development workstation.
 
+## Linting
+
+Linting should be carried out by `ansible-lint`. If ansible was installed
+using this repository then it's accessed via venv:
+
+```bash
+source venv/bin/activate
+ansible-lint roles/*
+```
+
 ## Integration Tests
 
 Kitchen is used as the test runner, with vagrant as the provisioner and inspec as the verifier.

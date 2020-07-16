@@ -1,0 +1,20 @@
+---
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+  when: ansible_facts.packages is not defined
+
+- name: Install ansible
+  package:
+    name: ansible
+  when: "'ansible' not in ansible_facts.packages"
+
+- name: Install virtualenv via pip
+  pip:
+    name: virtualenv
+    executable: pip3
+
+- name: Install ansible-lint
+  pip:
+    name: ansible-lint
+    virtualenv: '{{ ansible_repo_home }}/venv'

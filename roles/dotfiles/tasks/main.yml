@@ -1,7 +1,8 @@
 ---
-- fail:
+- name: Fail if username is empty to prevent become falling back on root
+  fail:
     msg: "Username is empty"
-  when: username == ""
+  when: username | length == 0
 
 - name: Ensure the following is run for specific user
   block:
@@ -9,28 +10,29 @@
   - name: Symlink .inputrc
     file:
       src: '{{ roles_path_exposed }}/files/inputrc'
-      dest: '{{home_path}}/{{username}}/.inputrc'
+      dest: '{{ home_path }}/{{ username }}/.inputrc'
       state: link
 
-  - stat:
-      path: '{{home_path}}/{{username}}/.bashrc'
+  - name: Capture stat of .bashrc
+    stat:
+      path: '{{ home_path }}/{{ username }}/.bashrc'
     register: stat_result
-  - name: Remove .bashrc if exists and symlink
+  - name: Remove .bashrc if exists and not a symlink
     file:
-      path: '{{home_path}}/{{username}}/.bashrc'
+      path: '{{ home_path }}/{{ username }}/.bashrc'
       state: absent
     when: stat_result.stat.exists is defined and not stat_result.stat.islnk
 
-  - name: "Create a symbolic link for {{home_path}}/{{username}}/.bashrc"
+  - name: "Create a symbolic link for {{ home_path }}/{{ username }}/.bashrc"
     file:
-      src: '{{roles_path_exposed}}/files/bashrc'
-      dest: '{{home_path}}/{{username}}/.bashrc'
+      src: '{{ roles_path_exposed }}/files/bashrc'
+      dest: '{{ home_path }}/{{ username }}/.bashrc'
       state: link
 
-  - name: "Create a symbolic link for {{home_path}}/{{username}}/.bashrc.d"
+  - name: "Create a symbolic link for {{ home_path }}/{{ username }}/.bashrc.d"
     file:
-      src: '{{roles_path_exposed}}/files/bashrc.d'
-      dest: '{{home_path}}/{{username}}/.bashrc.d'
+      src: '{{ roles_path_exposed }}/files/bashrc.d'
+      dest: '{{ home_path }}/{{ username }}/.bashrc.d'
       state: link
 
   - name: Setup git settings
@@ -40,4 +42,4 @@
     import_tasks: tmux.yml
 
   become: true
-  become_user: "{{username}}"
+  become_user: "{{ username }}"

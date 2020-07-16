@@ -2,12 +2,12 @@
 # tasks file for tmux
 - name: Create symbolic link of tmux.conf
   file:
-    src: '{{roles_path_exposed}}/files/tmux/tmux.conf'
-    dest: '{{home_path}}/{{username}}/.tmux.conf'
+    src: '{{ roles_path_exposed }}/files/tmux/tmux.conf'
+    dest: '{{ home_path }}/{{ username }}/.tmux.conf'
     state: link
 
 - name: Create symbolic link of teamocil
   file:
-    src: '{{roles_path_exposed}}/files/tmux/teamocil'
-    dest: '{{home_path}}/{{username}}/.teamocil'
+    src: '{{ roles_path_exposed }}/files/tmux/teamocil'
+    dest: '{{ home_path }}/{{ username }}/.teamocil'
     state: link

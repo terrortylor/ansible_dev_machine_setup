@@ -1,0 +1,5 @@
+---
+home_path: "/home/"
+username: "vagrant"
+workspace_home: '{{home_path}}/{{username}}/personnal-workspace'
+ansible_repo_home: '{{workspace_home}}/ansible'
