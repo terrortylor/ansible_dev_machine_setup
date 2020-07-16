@@ -8,4 +8,6 @@
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: nvim, tags: ['nvim'] }
     - { role: slack, tags: ['slack'] }
+    - { role: ansible, tags: ['ansible'] }
+    - { role: gcloud-sdk, tags: ['gcloud-sdk'] }
 

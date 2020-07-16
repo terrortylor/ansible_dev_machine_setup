@@ -1,0 +1,21 @@
+---
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+  when: ansible_facts.packages is not defined
+
+- name: Add google-cloud-sdk repository
+  yum_repository:
+    name: google-cloud-sdk
+    description: Repository used to install google-cloud-sdk
+    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64
+    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgkey:
+      - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+- name: Install google-cloud-sdk
+  package:
+    name: google-cloud-sdk
+  when: "'google-cloud-sdk' not in ansible_facts.packages"
