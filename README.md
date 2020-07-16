@@ -1,19 +1,8 @@
 # What am I
 
-Ansible scripts for configuring my development workstations, which are the following:
+Ansible scripts for configuring my development workstation.
 
-* OS X
-* Ubuntu (18.04)
-
-As such there are a few things you may want to change/remove!
-
-* VIM - This will set up my Neovim environment from another
-  [repository](https://github.com/terrortylor/vim-environment). To remove this
-  take a look at the `vim` role.
-
-## Tests
-
-### Integration Tests
+## Integration Tests
 
 Kitchen is used as the test runner, with vagrant as the provisioner and inspec as the verifier.
 
@@ -31,9 +20,9 @@ bundle exec kitchen list
 bundle exec kitchen verify <SUITE_NAME>
 ```
 
-## Preparation
+There are tests for most roles (run from within role directory), and root level test to call all roles.
 
-### RUBY
+**Requirements**
 This project uses rbenv and expects bundler to be installed.
 To install dependencies:
 
@@ -42,130 +31,63 @@ rbenv init
 bundle install
 ```
 
-As this is designed to run on both OS X and Ubuntu, there are two setup guides:
+## Expectations
 
-### OS X Specific
+**File Structure**
+The tets use a role called `kitchen` which is used to set up a kitchen test
+with files to allow the role being tested to do things like symlinking.
 
-This is an Ansible project used to configure a mac used for development.
-Where possible homebrew is used as a package manager.
+Any test files/dummy folders live within the role themselves, usually under
+`test/integration`.
 
-Enable SSH:
+When running the roles against a real target some repositories are expected to
+already exist, such as the ansible and vim-environment. I decided to manage
+these separately as it fit my use case.
 
-```bash
-sudo systemsetup -setremotelogin on
-```
+**Run as root**
+These role expect to be run as root, and then become the user specified as
+required. If you run this as a named user, ensure that you use the `--become`
+flag.
 
-Connect to instance as your user, accepting keys:
+## Playbook and inventory files
 
-```bash
-ssh -o "StrictHostKeyChecking no" $USER@127.0.0.1
-```
+As this is generally for provisioning a single instance, I just use simple
+inventory and playbooks:
 
-Additional: Install xcode
-Basically you need this to run the local git installation...
-So haveing checked this out, it's likely that you've already got it installed.
+## Running
 
-```bash
-xcode-select --install
-```
-
-Install pip, and anisble:
+I generally run locally with:
 
 ```bash
-sudo easy_install pip
-sudo pip install ansible
+ansible-playbook -i inventory.ini  playbook.yml --ask-become-pass --limit local
 ```
 
-This was setup with:
+or remotely with:
 
 ```bash
-ansible 2.7.10
+ansible-playbook -i inventory.ini  playbook.yml --ask-become-pass --limit remote
 ```
 
-### Ubuntu
+Where the inventory is something along the lines of `example-inventory.yml`
 
-Install git:
+To limit to a particular tag use the `--tags TAG` flag.
 
-```bash
-sudo apt-get install git
-```
+## Other...
 
-Enable ssh:
+My old scripts became cumbersome and as they were not tested using them to
+provision multiple OS became a chore. As such I've taken the verbose role
+route this time, scrapping old scripts and starting afresh with kitchen as the
+test runner.
 
-```bash
-sudo apt install openssh-server
-ssh -o "StrictHostKeyChecking no" $USER@127.0.0.1
-```
+I've tried to script defensively, and for speed... So there are some slightly
+odd decisions. Ansible would not be my first choice of tooling but it fit the
+bill.
 
-Install Ansible:
+The role `dotfiles` is fairly self explanatory, but I've separated by nvim
+environment config for ease of having it in multiple locations (work machine,
+phone etc)
 
-```bash
-sudo apt-get install ansible
-```
+## Old Versions
 
-### Create an ansible hosts file
-
-Create a hosts file. There is an example host file called **hosts.example**.
-Copy this to **/etc/ansible/hosts** or use the **-i** flag to indicate where
-the hosts file is.
-
-### SSH keys
-
-This script checks out a repository or two... and depends on your ssh keys
-being in place.
-
-## Configuration Management
-
-Run the ansible playbook:
-
-```bash
-ansible-playbook dev.yml -K
-```
-
-Run the ansbile playbook, using tags:
-
-```bash
-ansible-playbook dev.yml -K --tags packages
-```
-
-### Roles/Tags
-
-The following roles exists:
-
-* packages - installs a number of packages for os x
-* terminal - sets up dot files etc
-* atom - installs packages for atom
-* vim - tried to keep all vim set up tasks like checking out vim config,
-  installing packages, symlinking files etc in this role. Has a dependency
-  on 'packages' roles.
-
-#### vim
-
-Check out the [repository](https://github.com/terrortylor/vim-environment)
-tl;dr my neovim config... I've removed vim config in favour of neovim config
-now ヘ（。□°）ヘ
-
-This role sets up vim required packages etc. Don't just copy, learn vim first!
-That being said most of these are to support LSP within vim, the plugin on choice
-here is [COC](https://github.com/neoclide/coc.nvim).
-
-Currently this has support (on some level) for:
-
-* markdown
-* go
-* yaml - linting
-* json - linting
-* ruby
-
-## Stuff not automated (yet...?)
-
-* Android Dev : To set up the Android SDK this is done via Android Studio as
-  per [this link](https://facebook.github.io/react-native/docs/getting-started.html);
-  depending on what SDK version is required.
-
-
-  [good example code](https://github.com/gaelL/kitchen_ci/tree/master/playbook_test)
-  [testinfra molecue example](https://www.jeffgeerling.com/blog/2018/testing-your-ansible-roles-molecule)
-  [a nice ansible code example](https://github.com/shudarshon/ansible_role/blob/master/roles/jenkins/tasks/main.yml)
-  [anibsle and molecue and goss](https://medium.com/@chaks/testing-ansible-role-with-molecule-docker-testinfra-goss-part-1-c0277b748b63)
-
+A version that doesn't have tests but was used to spin up OSX and Ubuntu can be
+found on the branch: `pre-test-restructure-ubuntu-osx`

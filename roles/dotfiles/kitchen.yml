@@ -18,7 +18,7 @@ platforms:
         # This is used by the kitchen role, sole purpose is to sync this repository to vm
         home_path: '/home/'
         # as role not running locally we need to set this value, it's set in the defaults as role_path otherwise
-        roles_path_exposed: '/home/vagrant/personnal-workspace/ansible/roles/dotfiles'
+        roles_path_exposed: '{{home_path}}vagrant/personnal-workspace/ansible/roles/dotfiles'
 
 suites:
   - name: fedora

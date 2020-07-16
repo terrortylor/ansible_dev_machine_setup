@@ -13,6 +13,17 @@
     src: "{{ role_path }}/../../roles"
     dest: "{{ home_path }}/vagrant/personnal-workspace/ansible/"
     # Hack to set user as become isn't honoured
-    ssh_args:
-      - "-l vagrant"
-      - "--exclude=**/.kitchen"
+    ssh_args: "['-l vagrant', '--exclude=**/.kitchen']"
+
+- name: Creates the vim directory
+  file:
+    path: ~/personnal-workspace/vim-environment
+    state: directory
+  become: true
+  become_user: vagrant
+
+- name: Copy fake vim config directory contents
+  synchronize:
+    src: "{{ role_path }}/../../roles/nvim/test/integration/fake-nvim-env/"
+    dest: "{{ home_path }}/vagrant/personnal-workspace/vim-environment"
+    ssh_args: "-l vagrant"

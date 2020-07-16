@@ -1,0 +1,19 @@
+---
+fedora:
+  hosts:
+    192.168.0.91:
+    127.0.0.1:
+  vars:
+    ansible_user: "joebloggs"
+    ansible_become: true
+    ansible_python_interpreter: "python3"
+    home_path: "/home"
+    username: "joebloggs"
+    workspace_home: "{{home_path}}/{{username}}/workspace"
+    roles_path_exposed: "{{workspace_home}}/ansible/roles/dotfiles"
+remote:
+  hosts:
+    192.168.0.91
+local:
+  hosts:
+    127.0.0.1

@@ -1,18 +1,13 @@
 #!/bin/bash
 
-if [ "$#" -ne 2 ]; then
-  echo "Illegal number of parameters, expected 2 got $#"
-  echo -e "Usage:\n${FUNCNAME[0]} <ROLE NAME> <TAGS>"
+if [ "$#" -ne 1 ]; then
+  echo "Illegal number of parameters, expected 1 got $#"
+  echo -e "Usage:\n${FUNCNAME[0]} <ROLE NAME>"
   return 1
 fi
 
 if [ -z ${1} ]; then
   echo "ERROR: Role name can not be empty"
-  exit 1
-fi
-
-if [ -z ${2} ]; then
-  echo "ERROR: Must supply at least one tag"
   exit 1
 fi
 
@@ -26,17 +21,14 @@ touch roles/${1}/defaults/main.yml
 # - name: "Fedora tasks"
 #   include: redhat.yml
 #   when: ansible_os_family == 'RedHat'
-#   tags: ${2}, redhat
 
 # - name: "OSX tasks"
 #   include: osx.yml
 #   when: ansible_os_family == 'Darwin'
-#   tags: ${2}, darwin
 
 # - name: "Windows Tasks"
 #   include: windows.yml
 #   when: ansible_os_family == 'Windows'
-#   tags: ${2}, windows
 # EOF
 
 touch roles/${1}/kitchen.yml
@@ -60,7 +52,7 @@ platforms:
 suites:
   - name: fedora
 EOF
-mkdir roles/${1}/test/integration/fedora
+mkdir -p roles/${1}/test/integration/fedora
 touch roles/${1}/test/integration/fedora/default_spec.rb
 touch roles/${1}/test/integration/hosts.ini
 cat <<EOF >>roles/${1}/test/integration/hosts.ini

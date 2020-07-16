@@ -1,0 +1,11 @@
+---
+- name: all
+  hosts: all
+  roles:
+    - { role: chef-workstation, tags: ['chef'] }
+    - { role: ssh, tags: ['chrome'] }
+    - { role: chrome, tags: ['chrome'] }
+    - { role: dotfiles, tags: ['dotfiles'] }
+    - { role: nvim, tags: ['nvim'] }
+    - { role: slack, tags: ['slack'] }
+

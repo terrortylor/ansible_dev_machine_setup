@@ -1,32 +1,36 @@
 ---
+- fail:
+    msg: "Username is empty"
+  when: username == ""
+
 - name: Ensure the following is run for specific user
   block:
 
   - name: Symlink .inputrc
     file:
       src: '{{ roles_path_exposed }}/files/inputrc'
-      dest: '~/.inputrc'
+      dest: '{{home_path}}/{{username}}/.inputrc'
       state: link
 
   - stat:
-      path: '~/.bashrc'
+      path: '{{home_path}}/{{username}}/.bashrc'
     register: stat_result
   - name: Remove .bashrc if exists and symlink
     file:
-      path: '~/.bashrc'
+      path: '{{home_path}}/{{username}}/.bashrc'
       state: absent
     when: stat_result.stat.exists is defined and not stat_result.stat.islnk
 
-  - name: Create a symbolic link for ~/.bashrc
+  - name: "Create a symbolic link for {{home_path}}/{{username}}/.bashrc"
     file:
       src: '{{roles_path_exposed}}/files/bashrc'
-      dest: '~/.bashrc'
+      dest: '{{home_path}}/{{username}}/.bashrc'
       state: link
 
-  - name: Create a symbolic link for ~/.bashrc.d
+  - name: "Create a symbolic link for {{home_path}}/{{username}}/.bashrc.d"
     file:
       src: '{{roles_path_exposed}}/files/bashrc.d'
-      dest: '~/.bashrc.d'
+      dest: '{{home_path}}/{{username}}/.bashrc.d'
       state: link
 
   - name: Setup git settings
@@ -35,6 +39,5 @@
   - name: Setup tmux settings
     import_tasks: tmux.yml
 
-  # TODO can this be moved to the include level in main.yml?
   become: true
   become_user: "{{username}}"

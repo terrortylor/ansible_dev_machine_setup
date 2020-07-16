@@ -1,4 +1,6 @@
+inventory.yml
 *.retry
 **/.kitchen/
 .kitchen.local.yml
 **/.DS_Store
+roles/terminal

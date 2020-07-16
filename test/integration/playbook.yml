@@ -1,0 +1,12 @@
+---
+- name: ssh
+  hosts: all
+  roles:
+  - { role: chef-workstation }
+  - { role: ssh }
+  - { role: chrome }
+  # This is required for testing dotfiles
+  - { role: kitchen }
+  - { role: dotfiles }
+  - { role: nvim }
+  # - { role: slack }

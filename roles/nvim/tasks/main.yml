@@ -1,0 +1,36 @@
+---
+- fail:
+    msg: "Username is empty"
+  when: username == ""
+
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+  when: ansible_facts.packages is not defined
+
+- name: "Install neovim"
+  yum:
+    name: "neovim"
+  when: "'neovim' not in ansible_facts.packages"
+
+- name: "Install python3-neovim"
+  yum:
+    name: "python3-neovim"
+  when: "'python3-neovim' not in ansible_facts.packages"
+
+- name: Ensure the following is run for specific user
+  block:
+
+  - name: "Ensure {{home_path}}/{{username}}/.config directory exists"
+    file:
+      path: "{{home_path}}/{{username}}/.config"
+      state: directory
+
+  - name: Create symbolic link of neovim config files
+    file:
+      src: '{{workspace_home}}/vim-environment'
+      dest: '{{home_path}}/{{username}}/.config/nvim'
+      state: link
+
+  become: true
+  become_user: "{{username}}"
