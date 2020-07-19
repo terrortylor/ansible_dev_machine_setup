@@ -3,6 +3,7 @@
   hosts: all
   roles:
     - { role: chef-workstation, tags: ['chef'] }
+    - { role: ruby, tags: ['ruby', 'rvm'] }
     - { role: ssh, tags: ['chrome'] }
     - { role: chrome, tags: ['chrome'] }
     - { role: dotfiles, tags: ['dotfiles'] }

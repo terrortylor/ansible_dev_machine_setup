@@ -1,0 +1,8 @@
+---
+home_path: "/home/"
+username: "vagrant"
+ruby_default_version: ruby-2.7.0
+ruby_versions:
+  - ruby-2.7.0
+  # 2.5.1 is used by some tools out side of my control
+  - ruby-2.5.1
