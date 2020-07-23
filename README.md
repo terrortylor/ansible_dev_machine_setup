@@ -75,13 +75,13 @@ inventory and playbooks:
 I generally run locally with:
 
 ```bash
-ansible-playbook -i inventory.ini  playbook.yml --ask-become-pass --limit local
+ansible-playbook -i inventory.yml  playbook.yml --ask-become-pass --limit local
 ```
 
 or remotely with:
 
 ```bash
-ansible-playbook -i inventory.ini  playbook.yml --ask-become-pass --limit remote
+ansible-playbook -i inventory.yml  playbook.yml --ask-become-pass --limit remote
 ```
 
 Where the inventory is something along the lines of `example-inventory.yml`

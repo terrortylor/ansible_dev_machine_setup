@@ -10,5 +10,6 @@
     - { role: nvim, tags: ['nvim'] }
     - { role: slack, tags: ['slack'] }
     - { role: ansible, tags: ['ansible'] }
+    - { role: lazygit, tags: ['lazygit', 'tui'] }
     - { role: gcloud-sdk, tags: ['gcloud-sdk'] }
 

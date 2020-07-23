@@ -1,0 +1,16 @@
+# The neovim source has a nice testing package, this can be harnessed for my own tests, so check out source
+---
+- name: Check out the neovim source
+  git:
+    repo: 'https://github.com/neovim/neovim.git'
+    dest: "{{ workspace_home }}/neovim-source"
+  become: true
+  become_user: "{{ username }}"
+
+- name: "Install neovim build/test required packages"
+  package:
+    name: "{{ item }}"
+  when: item not in ansible_facts.packages
+  loop:
+    - cmake
+

@@ -36,3 +36,6 @@
 
   become: true
   become_user: "{{ username }}"
+
+- name: Add neovim source and build dependencies
+  import_tasks: nvim-source.yml

@@ -15,6 +15,8 @@ mkcd() {
 # Function to search ~/.bashrc.d for any aliases based on a key
 # word; it then prints out the alias name and value on seperate
 # lines to aid in readability.
+# FIXME Not sure this works for functions any more
+# TODO add alias or function wrapper so can call 'member'
 find_alias_function() {
   if [ "$#" -ne 1 ]; then
     echo "Illegal number of parameters, expected 1 got $#"
