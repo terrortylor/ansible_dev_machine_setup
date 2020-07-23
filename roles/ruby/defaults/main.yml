@@ -1,5 +1,5 @@
 ---
-home_path: "/home/"
+home_path: "/home"
 username: "vagrant"
 ruby_default_version: ruby-2.7.0
 ruby_versions:
