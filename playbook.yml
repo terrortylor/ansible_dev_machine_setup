@@ -4,7 +4,7 @@
   roles:
     - { role: chef-workstation, tags: ['chef'] }
     - { role: ruby, tags: ['ruby', 'rvm'] }
-    - { role: ssh, tags: ['chrome'] }
+    - { role: ssh, tags: ['ssh'] }
     - { role: chrome, tags: ['chrome'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: nvim, tags: ['nvim'] }
@@ -12,4 +12,5 @@
     - { role: ansible, tags: ['ansible'] }
     - { role: lazygit, tags: ['lazygit', 'tui'] }
     - { role: gcloud-sdk, tags: ['gcloud-sdk'] }
+    - { role: influxdb-cli, tags: ['influxdb-cli'] }
 

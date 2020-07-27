@@ -1,0 +1,5 @@
+---
+- name: influxdb-cli
+  hosts: all
+  roles:
+  - { role: influxdb-cli }

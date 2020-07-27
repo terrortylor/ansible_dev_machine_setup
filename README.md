@@ -19,7 +19,7 @@ Kitchen is used as the test runner, with vagrant as the provisioner and inspec a
 To run the tests you'll need to set up the ruby environment:
 
 ```bash
-rbenv init
+# Dev'd on Ruby v2.7.0
 bundle install
 ```
 

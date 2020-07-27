@@ -1,0 +1,5 @@
+---
+- name: lazygit
+  hosts: all
+  roles:
+  - { role: lazygit }

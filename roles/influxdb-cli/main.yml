@@ -1,0 +1,18 @@
+---
+- stat:
+    path: /usr/local/bin/influx
+  register: file
+
+- name: Download and extract influxdb cli tool
+  unarchive:
+    src: https://dl.influxdata.com/influxdb/releases/influxdb-1.8.1_linux_amd64.tar.gz
+    dest: /tmp/influxdb
+  # when: file.stat.exists is not defined
+
+- name: Copy influx cli tool /usr/local/bin
+  copy:
+    src: /tmp/influxdb/bin/influx
+    dest: /usr/local/bin/influx
+    owner: root
+    group: root
+    mode: '0755'
