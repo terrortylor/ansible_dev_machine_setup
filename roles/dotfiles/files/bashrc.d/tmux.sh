@@ -34,3 +34,5 @@ tmux_set_window_name() {
     fi
   fi
 }
+
+alias tsn=tmux_set_window_name
