@@ -62,7 +62,7 @@ EOF
 touch roles/${1}/test/integration/playbook.yml
 cat <<EOF >>roles/${1}/test/integration/playbook.yml
 ---
-- name: github_clone
+- name: ${1}
   hosts: all
   roles:
   - { role: ${1} }

@@ -4,6 +4,7 @@
   git:
     repo: 'https://github.com/neovim/neovim.git'
     dest: "{{ workspace_home }}/neovim-source"
+    update: no
   become: true
   become_user: "{{ username }}"
 

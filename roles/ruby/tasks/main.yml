@@ -37,7 +37,6 @@
       # Must be an or here as sometimes one fails to import... *SHAKES FIST AT RVM INSTALL METHOD*
     when: '"409B6B1796C275462A1703113804BB82D39DC0E3" not in sym.stdout or "7D2BAF1CF37B13E2069D6956105BD0E739499BDB" not in sym.stdout'
 
-
   - name: Get default ruby stat
     stat:
       path: "{{ home_path }}/{{ username }}/.rvm/bin/rvm"

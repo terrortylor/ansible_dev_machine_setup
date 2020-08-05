@@ -2,3 +2,5 @@
 home_path: "/home"
 username: "vagrant"
 workspace_home: '{{home_path}}/{{username}}/personnal-workspace'
+luarocks_packages:
+  - busted
