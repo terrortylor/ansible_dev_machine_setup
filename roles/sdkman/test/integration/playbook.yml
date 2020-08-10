@@ -1,0 +1,5 @@
+---
+- name: sdkman
+  hosts: all
+  roles:
+  - { role: sdkman }

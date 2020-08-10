@@ -1,0 +1,47 @@
+---
+- name: Fail if username is empty to prevent become falling back on root
+  fail:
+    msg: "Username is empty"
+  when: username | length == 0
+
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+  when: ansible_facts.packages is not defined
+
+# This is a bit hacky, but as the path isn't updated after installing RVM on the first run this ensures RVM can be found
+- name: Set path to include RVM, and ensure single-user install
+  block:
+
+  - name: Check sdk init script exists
+    stat:
+      path: "{{ home_path }}/{{ username }}/.sdk/bin/sdkman-init.sh"
+    register: sym
+
+  - name: Install SDKman
+    shell: |
+      set -o pipefail
+      curl -s "https://get.sdkman.io" | bash
+    args:
+      warn: no
+      creates: "{{ home_path }}/{{ username }}/.sdk/bin/sdkman-init.sh"
+    when: not sym.stat.exists
+
+  - name: Set sdkman to auto install
+    lineinfile:
+      path: "{{ home_path }}/{{ username }}/.sdkman/etc/config"
+      regexp: '^sdkman_auto_answer='
+      line: sdkman_auto_answer=true
+
+  # Run these as interactive bash... not ideal but need to source the sdk init script
+  - name: "Install JDKs ... (takes awhile to do the installs)"
+    command: "bash -ic 'sdk install java {{ item }}'"
+    args:
+      creates: "{{ home_path }}/{{ username }}/.sdkman/candidates/java/{{ item }}"
+    loop: "{{ java_versions }}"
+
+  - name: "Set default java version"
+    command: "bash -ic 'sdk default java {{ java_default_version }}'"
+
+  become: true
+  become_user: "{{ username }}"

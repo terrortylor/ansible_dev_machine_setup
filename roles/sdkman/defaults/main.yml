@@ -1,0 +1,6 @@
+---
+home_path: "/home"
+username: "vagrant"
+java_default_version: 11.0.8-zulu
+java_versions:
+  - 11.0.8-zulu
