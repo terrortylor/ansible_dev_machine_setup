@@ -10,15 +10,39 @@
     manager: rpm
   when: ansible_facts.packages is not defined
 
-- name: "Install neovim"
+- name: Install neovim
   yum:
-    name: "neovim"
+    name: neovim
   when: "'neovim' not in ansible_facts.packages"
 
-- name: "Install python3-neovim"
+- name: Install python3-neovim
   yum:
-    name: "python3-neovim"
+    name: python3-neovim
   when: "'python3-neovim' not in ansible_facts.packages"
+
+- name: Install lua
+  yum:
+    name: lua
+  when: "'lua' not in ansible_facts.packages"
+
+- name: Install lua-devel
+  yum:
+    name: lua-devel
+  when: "'lua-devel' not in ansible_facts.packages"
+
+- name: Install luarocks
+  yum:
+    name: luarocks
+  when: "'luarocks' not in ansible_facts.packages"
+
+- name: Gather installed lua rocks
+  shell: luarocks list
+  register: rocks
+
+- name: Install lua rocks
+  shell: "luarocks install {{ item }}"
+  loop: "{{ luarocks_packages }}"
+  when: "'{{ item }}' not in rocks.stdout"
 
 - name: Ensure the following is run for specific user
   block:

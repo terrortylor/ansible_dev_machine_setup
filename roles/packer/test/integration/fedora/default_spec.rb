@@ -5,3 +5,7 @@ end
 describe command('packer -v') do
   its('stdout') { should include '1.6.1' }
 end
+
+describe package('pykickstart') do
+  it { should be_installed }
+end

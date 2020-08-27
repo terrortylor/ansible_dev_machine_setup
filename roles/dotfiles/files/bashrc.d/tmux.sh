@@ -14,11 +14,14 @@ tmux_open_session() {
   fi
 }
 
+# Sets the TMUX window name
+# Args:
+# 1 - int, if greater than 0 then prompt user if can't work it out
 tmux_set_window_name() {
   if [ -z $TMUX ]; then
     echo "Tmux not running... skipping"
   else
-    git_root=$(git rev-parse --show-toplevel)
+    git_root=$(git rev-parse --show-toplevel 2>/dev/null)
     if [ $? -eq 0 ]; then
       # Check in in work related workspace
       if [[ $git_root == *"${HOME}/workspace/"* ]]; then
@@ -30,9 +33,12 @@ tmux_set_window_name() {
       fi
       tmux rename-window ${name}
     else
-      echo "Not in git repo, set name as required..."
+      if [ ${1} -gt 0 ]; then
+        read -p "Can't work out name, please enter: " name
+        tmux rename-window ${name}
+      fi
     fi
   fi
 }
 
-alias tsn=tmux_set_window_name
+alias tsn="tmux_set_window_name 1"

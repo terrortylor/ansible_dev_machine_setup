@@ -9,3 +9,14 @@
     dest: /usr/local/bin
     remote_src: yes
   when: not file.stat.exists
+
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+  when: ansible_facts.packages is not defined
+
+# Used to validate kickstarter files
+- name: Install pykickstart
+  package:
+    name: pykickstart
+  when: '"pykickstart" not in ansible_facts.packages'

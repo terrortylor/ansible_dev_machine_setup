@@ -1,0 +1,5 @@
+---
+- name: terminal-tools
+  hosts: all
+  roles:
+  - { role: terminal-tools }

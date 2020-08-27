@@ -1,0 +1,10 @@
+---
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+  when: ansible_facts.packages is not defined
+
+- name: Install remmina remote desktop app
+  package:
+    name: remmina
+  when: "'remmina' not in ansible_facts.packages"

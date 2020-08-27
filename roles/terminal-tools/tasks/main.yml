@@ -1,0 +1,19 @@
+---
+- name: Gather the rpm package facts
+  package_facts:
+    manager: rpm
+  when: ansible_facts.packages is not defined
+
+- name: Install packages
+  package:
+    name: "{{ item }}"
+  when: item not in ansible_facts.packages
+  loop:
+    - tmux
+    - fzf
+    - bat      # cat clone with syntax highlighting
+    - fd-find  # find alternative: https://github.com/sharkdp/fd
+    - ripgrep  # fast alternative to grep
+
+- name: Install lazygit
+  import_tasks: lazygit.yml
