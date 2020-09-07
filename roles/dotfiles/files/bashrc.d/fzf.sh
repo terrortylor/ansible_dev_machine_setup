@@ -17,6 +17,14 @@ fcd() {
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
+
+  tmux_set_window_name
+}
+
+# Same as above but moves to home directory first
+ffcd() {
+  cd ~
+  fcd
 }
 
 fcat() {

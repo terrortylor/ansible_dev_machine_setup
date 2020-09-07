@@ -14,6 +14,7 @@
     - bat      # cat clone with syntax highlighting
     - fd-find  # find alternative: https://github.com/sharkdp/fd
     - ripgrep  # fast alternative to grep
+    - nmap
 
 - name: Install lazygit
   import_tasks: lazygit.yml

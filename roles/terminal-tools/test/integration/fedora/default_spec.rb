@@ -1,6 +1,12 @@
-%w[lazygit tmux fzf bat fd].each do |package|
+%w[lazygit tmux fzf bat nmap].each do |package|
   describe package(package) do
     it { should be_installed }
+  end
+end
+
+%w[rg fd].each do |binary|
+  describe file("/usr/bin/#{binary}") do
+    it { should exist }
   end
 end
 
