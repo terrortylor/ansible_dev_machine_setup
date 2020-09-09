@@ -2,7 +2,12 @@
 fvim() {
   local files
 
-  files="$(fzf -m --preview 'cat {}')"
+  # TODO this is repeated, tidy up
+  if type bat > /dev/null; then
+    files="$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')"
+  else
+    files="$(fzf --preview 'cat {}')"
+  fi
 
   if [[ -n $files ]]; then
      nvim -- $files
@@ -13,9 +18,15 @@ fvim() {
 f_insert_file_name() {
   local file
 
-  file="$(fzf --preview 'cat {}')"
+  if type bat > /dev/null; then
+    file="$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')"
+  else
+    file="$(fzf --preview 'cat {}')"
+  fi
 
-  printf $file
+  if [[ -n $file ]]; then
+    printf $file
+  fi
 }
 
 # fzf into directory under current
@@ -42,26 +53,25 @@ f_insert_directory_name() {
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
 
-  printf $dir
-}
-
-# TODO single fcat/fbat function
-fcat() {
-  local file
-
-  file="$(fzf --preview 'cat {}')"
-
-  if [[ -n $file ]]; then
-     cat $file
+  if [[ -n $dir ]]; then
+    printf $dir
   fi
 }
 
-fbat() {
+fcat() {
   local file
 
-  file="$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')"
+  if type bat > /dev/null; then
+    file="$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')"
+  else
+    file="$(fzf --preview 'cat {}')"
+  fi
 
   if [[ -n $file ]]; then
-     bat $file
+    if type bat > /dev/null; then
+      bat $file
+    else
+      cat $file
+    fi
   fi
 }
