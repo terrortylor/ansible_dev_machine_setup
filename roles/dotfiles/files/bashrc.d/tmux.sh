@@ -14,13 +14,11 @@ tmux_open_session() {
   fi
 }
 
-# Sets the TMUX window name
+# Sets the TMUX window name, does nothing if not in TMUX
 # Args:
 # 1 - int, if greater than 0 then prompt user if can't work it out
 tmux_set_window_name() {
-  if [ -z $TMUX ]; then
-    echo "Tmux not running... skipping"
-  else
+  if [ ! -z $TMUX ]; then
     git_root=$(git rev-parse --show-toplevel 2>/dev/null)
     if [ $? -eq 0 ]; then
       # Check in in work related workspace
