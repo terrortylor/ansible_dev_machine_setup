@@ -1,0 +1,5 @@
+---
+- name: helm
+  hosts: all
+  roles:
+  - { role: helm }

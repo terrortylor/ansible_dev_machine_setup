@@ -1,0 +1,20 @@
+---
+- stat:
+    path: /usr/local/bin/k9s
+  register: file
+
+- name: Download k9s
+  unarchive:
+    src: "https://github.com/derailed/k9s/releases/download/v{{ k9s.version }}/k9s_Linux_x86_64.tar.gz"
+    dest: /tmp
+    remote_src: yes
+  when: not file.stat.exists
+
+- name: Copy k9s to /usr/local/bin
+  copy:
+    src: /tmp/k9s
+    dest: /usr/local/bin/k9s
+    owner: root
+    group: root
+    mode: +x
+  when: not file.stat.exists

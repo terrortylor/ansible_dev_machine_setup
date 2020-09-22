@@ -1,4 +1,4 @@
-%w[lazygit tmux fzf bat nmap].each do |package|
+%w[lazygit tmux fzf bat nmap lastpass-cli].each do |package|
   describe package(package) do
     it { should be_installed }
   end

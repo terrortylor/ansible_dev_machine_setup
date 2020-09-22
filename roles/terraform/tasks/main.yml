@@ -1,0 +1,20 @@
+---
+- stat:
+    path: /usr/local/bin/terraform
+  register: file
+
+- name: Download terraform
+  unarchive:
+    src: "https://releases.hashicorp.com/terraform/{{ terraform.version }}/terraform_{{ terraform.version }}_linux_amd64.zip"
+    dest: /tmp
+    remote_src: yes
+  when: not file.stat.exists
+
+- name: Copy terraform to /usr/local/bin
+  copy:
+    src: /tmp/terraform
+    dest: /usr/local/bin/terraform
+    owner: root
+    group: root
+    mode: +x
+  when: not file.stat.exists

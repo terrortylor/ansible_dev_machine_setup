@@ -19,4 +19,8 @@
     - { role: packer, tags: ['packer'] }
     - { role: gcloud-sdk, tags: ['gcloud-sdk'] }
     - { role: influxdb-cli, tags: ['influxdb-cli'] }
+    - { role: kubectl, tags: ['kubectl'] }
+    - { role: helm, tags: ['helm'] }
+    - { role: k9s, tags: ['k9s'] }
+    - { role: terraform, tags: ['terraform'] }
 

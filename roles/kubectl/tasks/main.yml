@@ -1,0 +1,20 @@
+---
+- stat:
+    path: /usr/local/bin/kubectl
+  register: file
+
+- name: Download kubectl
+  shell: |
+    cd /usr/local/bin &&
+    curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+  args:
+    warn: no
+    creates: /usr/local/bin/kubectl
+  when: not file.stat.exists
+
+- name: Make kubectl executable
+  file:
+    path: /usr/local/bin/kubectl
+    owner: root
+    group: root
+    mode: +x

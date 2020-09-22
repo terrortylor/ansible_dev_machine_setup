@@ -1,0 +1,20 @@
+---
+- stat:
+    path: /usr/local/bin/helm
+  register: file
+
+- name: Download Helm
+  unarchive:
+    src: "https://get.helm.sh/helm-v{{ helm.version }}-linux-amd64.tar.gz"
+    dest: /tmp
+    remote_src: yes
+  when: not file.stat.exists
+
+- name: Copy helm to /usr/local/bin
+  copy:
+    src: /tmp/linux-amd64/helm
+    dest: /usr/local/bin/helm
+    owner: root
+    group: root
+    mode: +x
+  when: not file.stat.exists

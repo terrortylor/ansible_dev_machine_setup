@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/bash -e
 
 if [ "$#" -ne 1 ]; then
   echo "Illegal number of parameters, expected 1 got $#"
   echo -e "Usage:\n${FUNCNAME[0]} <ROLE NAME>"
-  return 1
+  exit 1
 fi
 
 if [ -z ${1} ]; then
@@ -13,23 +13,9 @@ fi
 
 mkdir -p roles/${1}/{defaults,tasks}
 touch roles/${1}/defaults/main.yml
-# touch roles/${1}/tasks/redhat.yml
-# touch roles/${1}/tasks/windows.yml
-# touch roles/${1}/tasks/osx.yml
-# cat <<EOF >>roles/${1}/tasks/main.yml
-# ---
-# - name: "Fedora tasks"
-#   include: redhat.yml
-#   when: ansible_os_family == 'RedHat'
-
-# - name: "OSX tasks"
-#   include: osx.yml
-#   when: ansible_os_family == 'Darwin'
-
-# - name: "Windows Tasks"
-#   include: windows.yml
-#   when: ansible_os_family == 'Windows'
-# EOF
+cat <<EOF >>roles/${1}/tasks/main.yml
+---
+EOF
 
 touch roles/${1}/kitchen.yml
 cat <<EOF >>roles/${1}/kitchen.yml
