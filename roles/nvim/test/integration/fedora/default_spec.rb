@@ -15,3 +15,9 @@ end
     it { should be_installed }
   end
 end
+
+%w[busted luacheck].each do |luapack|
+  describe file("/usr/bin/#{luapack}") do
+    it { should exist }
+  end
+end
