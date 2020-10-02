@@ -22,6 +22,7 @@
     - { role: kubectl, tags: ['kubectl', 'contianers'] }
     - { role: helm, tags: ['helm'] }
     - { role: notary, tags: ['notary'] }
+    - { role: minikube, tags: ['minikube'] }
     - { role: k9s, tags: ['k9s', 'contianers'] }
     - { role: terraform, tags: ['terraform', 'provisioning'] }
 
