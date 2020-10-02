@@ -11,16 +11,17 @@
     # Installs neovim and testing tooling
     - { role: nvim, tags: ['nvim'] }
     # Most of what follows is required for devops
-    - { role: chef-workstation, tags: ['chef'] }
+    - { role: chef-workstation, tags: ['chef', 'provisioning'] }
     - { role: ruby, tags: ['ruby', 'rvm'] }
-    - { role: sdkman, tags: ['sdkman'] }
+    - { role: sdkman, tags: ['sdkman', 'java'] }
     - { role: ssh, tags: ['ssh'] }
-    - { role: ansible, tags: ['ansible'] }
+    - { role: ansible, tags: ['ansible', 'provisioning'] }
     - { role: packer, tags: ['packer'] }
     - { role: gcloud-sdk, tags: ['gcloud-sdk'] }
-    - { role: influxdb-cli, tags: ['influxdb-cli'] }
-    - { role: kubectl, tags: ['kubectl'] }
+    - { role: influxdb-cli, tags: ['influxdb-cli', 'database'] }
+    - { role: kubectl, tags: ['kubectl', 'contianers'] }
     - { role: helm, tags: ['helm'] }
-    - { role: k9s, tags: ['k9s'] }
-    - { role: terraform, tags: ['terraform'] }
+    - { role: notary, tags: ['notary'] }
+    - { role: k9s, tags: ['k9s', 'contianers'] }
+    - { role: terraform, tags: ['terraform', 'provisioning'] }
 

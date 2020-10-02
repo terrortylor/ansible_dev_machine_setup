@@ -1,0 +1,14 @@
+---
+- stat:
+    path: /usr/local/bin/notary
+  register: file
+
+- name: Download Notary
+  get_url:
+    url: "https://github.com/theupdateframework/notary/releases/download/v{{ notary.version }}/notary-Linux-amd64"
+    dest: /usr/local/bin/notary
+    owner: root
+    group: root
+    mode: +x
+  when: not file.stat.exists
+

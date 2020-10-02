@@ -1,0 +1,5 @@
+---
+- name: notary
+  hosts: all
+  roles:
+  - { role: notary }
