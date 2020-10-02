@@ -4,7 +4,8 @@
     manager: rpm
   when: ansible_facts.packages is not defined
 
-- name: Install remmina remote desktop app
+- name: "Install packages"
   package:
-    name: remmina
-  when: "'remmina' not in ansible_facts.packages"
+    name: "{{ item }}"
+  when: item not in ansible_facts.packages
+  loop: "{{ desktop.packages }}"

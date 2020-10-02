@@ -6,6 +6,8 @@ describe package('slack') do
   it { should be_installed }
 end
 
-describe package('remmina') do
-  it { should be_installed }
+%w[remmina anki].each do |package|
+  describe package(package) do
+    it { should be_installed }
+  end
 end

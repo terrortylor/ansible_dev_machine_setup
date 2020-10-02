@@ -1,0 +1,5 @@
+---
+desktop:
+  packages:
+   - remmina
+   - anki

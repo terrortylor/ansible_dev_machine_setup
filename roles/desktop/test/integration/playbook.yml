@@ -1,5 +1,5 @@
 ---
-- name: github_clone
+- name: desktop
   hosts: all
   roles:
   - { role: desktop }
