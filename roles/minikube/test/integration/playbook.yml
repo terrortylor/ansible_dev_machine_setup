@@ -1,0 +1,5 @@
+---
+- name: minikube
+  hosts: all
+  roles:
+  - { role: minikube }

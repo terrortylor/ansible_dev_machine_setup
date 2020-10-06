@@ -1,0 +1,13 @@
+---
+- stat:
+    path: /usr/local/bin/minikube
+  register: file
+
+- name: Download minikube
+  get_url:
+    url: "https://github.com/kubernetes/minikube/releases/download/v{{ minikube.version }}/minikube-linux-amd64"
+    dest: /usr/local/bin/minikube
+    owner: root
+    group: root
+    mode: +x
+  when: not file.stat.exists
