@@ -23,6 +23,7 @@
     - { role: helm, tags: ['helm'] }
     - { role: notary, tags: ['notary'] }
     - { role: minikube, tags: ['minikube'] }
+    - { role: docker, tags: ['docker'] }
     - { role: k9s, tags: ['k9s', 'contianers'] }
     - { role: terraform, tags: ['terraform', 'provisioning'] }
 
