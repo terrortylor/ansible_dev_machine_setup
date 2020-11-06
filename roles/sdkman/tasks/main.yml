@@ -9,8 +9,7 @@
     manager: rpm
   when: ansible_facts.packages is not defined
 
-# This is a bit hacky, but as the path isn't updated after installing RVM on the first run this ensures RVM can be found
-- name: Set path to include RVM, and ensure single-user install
+- name: Run next steps as user
   block:
 
   - name: Check sdk init script exists
@@ -40,6 +39,7 @@
       creates: "{{ home_path }}/{{ username }}/.sdkman/candidates/java/{{ item }}"
     loop: "{{ java_versions }}"
 
+  # This has hung for unknown reason once before... setting manually stopeed issue but prevented investigation... next time work out why!
   - name: "Set default java version"
     command: "bash -ic 'sdk default java {{ java_default_version }}'"
 

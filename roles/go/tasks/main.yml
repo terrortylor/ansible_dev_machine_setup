@@ -1,0 +1,11 @@
+---
+- stat:
+    path: /usr/local/go
+  register: file
+
+- name: Download terraform
+  unarchive:
+    src: "https://golang.org/dl/go{{ go.version }}.linux-amd64.tar.gz"
+    dest: /usr/local
+    remote_src: yes
+  when: not file.stat.exists

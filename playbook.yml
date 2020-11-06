@@ -14,6 +14,7 @@
     - { role: chef-workstation, tags: ['chef', 'provisioning'] }
     - { role: ruby, tags: ['ruby', 'rvm'] }
     - { role: sdkman, tags: ['sdkman', 'java'] }
+    - { role: go, tags: ['go'] }
     - { role: ssh, tags: ['ssh'] }
     - { role: ansible, tags: ['ansible', 'provisioning'] }
     - { role: packer, tags: ['packer'] }

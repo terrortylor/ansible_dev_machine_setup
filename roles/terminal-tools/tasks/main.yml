@@ -16,7 +16,7 @@
     - ripgrep  # fast alternative to grep
     - nmap
     - lastpass-cli
-    - podman   # docker compatible alternative
+    - docker-compose
 
 - name: Install lazygit
   import_tasks: lazygit.yml
