@@ -20,3 +20,7 @@
 
 - name: Install lazygit
   import_tasks: lazygit.yml
+
+# Grep json files
+- name: Install gron
+  import_tasks: gron.yml
