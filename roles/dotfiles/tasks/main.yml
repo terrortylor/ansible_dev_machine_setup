@@ -35,6 +35,12 @@
       dest: '{{ home_path }}/{{ username }}/.bashrc.d'
       state: link
 
+  - name: "Create a symbolic link for {{ home_path }}/{{ username }}/bin"
+    file:
+      src: '{{ roles_path_exposed }}/files/bin'
+      dest: '{{ home_path }}/{{ username }}/bin'
+      state: link
+
   - name: Setup git settings
     import_tasks: git.yml
 

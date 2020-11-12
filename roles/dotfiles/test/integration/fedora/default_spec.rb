@@ -16,6 +16,12 @@ describe file('/home/vagrant/.bashrc.d') do
   its('link_path') { should eq '/home/vagrant/personnal-workspace/ansible/roles/dotfiles/files/bashrc.d' }
 end
 
+describe file('/home/vagrant/bin') do
+  it { should exist }
+  it { should be_symlink }
+  its('link_path') { should eq '/home/vagrant/personnal-workspace/ansible/roles/dotfiles/files/bin' }
+end
+
 describe file('/home/vagrant/.gitconfig') do
   it { should exist }
 end
