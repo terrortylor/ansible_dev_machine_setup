@@ -1,0 +1,3 @@
+LuarocksPathSetup() {
+  eval `luarocks path`
+}

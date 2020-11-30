@@ -75,3 +75,26 @@ fcat() {
     fi
   fi
 }
+
+rgfzfpreview() {
+  $1 >> /tmp/preview
+  bat --style=numbers --color=always --line-range :500 $1
+}
+
+# Wrapper for ripgrep and fzf, using bat as preview
+# To handle the ripgrep line, an external script RgFzfPreview is called, this
+# must be on the path
+# This is adapted from the fzf man docs
+rgfzf() {
+  path=${1}
+  query=${2}
+  RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+  FZF_DEFAULT_COMMAND="$RG_PREFIX '$query' ${path}" \
+    fzf --bind "change:reload:$RG_PREFIX {q} ${path} || true" \
+    --ansi --phony --query "$query" \
+    --preview 'RgFzfPreview {}'
+}
+
+SearchNotes() {
+  rgfzf "~/personnal-workspace/notes" ${1}
+}
