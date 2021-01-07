@@ -1,4 +1,9 @@
+daybook() {
+  cd ~/personnal-workspace/notes
+  vim -O work/daybook.md work/tasks.md
+}
+
 wiki() {
   cd ~/personnal-workspace/notes
-  vim -O main/daybook.md main/tasks.md
+  vim -O work/index.md
 }
