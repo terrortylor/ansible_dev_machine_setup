@@ -1,0 +1,5 @@
+---
+- name: azure-functions-core-tools
+  hosts: all
+  roles:
+  - { role: azure-functions-core-tools }

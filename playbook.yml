@@ -13,12 +13,13 @@
     # Most of what follows is required for devops
     - { role: chef-workstation, tags: ['chef', 'provisioning'] }
     - { role: ruby, tags: ['ruby', 'rvm'] }
-    - { role: sdkman, tags: ['sdkman', 'java'] }
+    # - { role: sdkman, tags: ['sdkman', 'java'] }
     - { role: go, tags: ['go'] }
     - { role: ssh, tags: ['ssh'] }
     - { role: ansible, tags: ['ansible', 'provisioning'] }
     - { role: packer, tags: ['packer'] }
     - { role: gcloud-sdk, tags: ['gcloud-sdk'] }
+    - { role: azure-functions-core-tools, tags: ['azure-function-core-tools'] }
     - { role: influxdb-cli, tags: ['influxdb-cli', 'database'] }
     - { role: kubectl, tags: ['kubectl', 'contianers'] }
     - { role: helm, tags: ['helm'] }

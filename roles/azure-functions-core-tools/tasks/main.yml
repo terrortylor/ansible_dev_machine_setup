@@ -1,0 +1,33 @@
+---
+- stat:
+    path: /usr/local/bin/func
+  register: existsFunc
+
+- stat:
+    path: /usr/local/bin/gozip
+  register: existsGozip
+
+- name: Download Azure Functions Core Tools
+  unarchive:
+    src: "https://github.com/Azure/azure-functions-core-tools/releases/download/{{ afct.version }}/Azure.Functions.Cli.linux-x64.{{ afct.version }}.zip"
+    dest: /tmp
+    remote_src: yes
+  when: not existsFunc.stat.exists and not existsGozip.stat.exists
+
+- name: Copy func to /usr/local/bin
+  copy:
+    src: /tmp/func
+    dest: /usr/local/bin/func
+    owner: root
+    group: root
+    mode: +x
+  when: not existsFunc.stat.exists
+
+- name: Copy gozip to /usr/local/bin
+  copy:
+    src: /tmp/gozip
+    dest: /usr/local/bin/gozip
+    owner: root
+    group: root
+    mode: +x
+  when: not existsGozip.stat.exists
