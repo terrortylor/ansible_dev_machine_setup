@@ -1,33 +1,47 @@
 ---
 - stat:
-    path: /usr/local/bin/func
-  register: existsFunc
+    path: /opt/azure-function
+  register: stat
 
-- stat:
-    path: /usr/local/bin/gozip
-  register: existsGozip
+- file:
+    path: /opt/azure-function
+    owner: root
+    group: root
+    state: directory
 
 - name: Download Azure Functions Core Tools
   unarchive:
     src: "https://github.com/Azure/azure-functions-core-tools/releases/download/{{ afct.version }}/Azure.Functions.Cli.linux-x64.{{ afct.version }}.zip"
-    dest: /tmp
+    dest: /opt/azure-function
     remote_src: yes
-  when: not existsFunc.stat.exists and not existsGozip.stat.exists
+  when: not stat.stat.exists
 
-- name: Copy func to /usr/local/bin
-  copy:
-    src: /tmp/func
+- name: Set ownership and permissions of func
+  file:
+    path: /opt/azure-function/func
+    owner: root
+    group: root
+    mode: +x
+
+- name: Symlink func
+  file:
+    src: /opt/azure-function/func
     dest: /usr/local/bin/func
     owner: root
     group: root
-    mode: +x
-  when: not existsFunc.stat.exists
+    state: link
 
-- name: Copy gozip to /usr/local/bin
-  copy:
-    src: /tmp/gozip
-    dest: /usr/local/bin/gozip
+- name: Set ownership and permissions of gozip
+  file:
+    path: /opt/azure-function/gozip
     owner: root
     group: root
     mode: +x
-  when: not existsGozip.stat.exists
+
+- name: Symlink func
+  file:
+    src: /opt/azure-function/gozip
+    dest: /usr/local/bin/gozip
+    owner: root
+    group: root
+    state: link
