@@ -2,22 +2,24 @@
 - name: all
   hosts: all
   roles:
+    # My dotfiles live here, want this to be first
+    - { role: dotfiles, tags: ['dotfiles'] }
     # Provisions required terminal tooling
     - { role: terminal-tools, tags: ['terminal'] }
     # Provisions desktop gui apps
     - { role: desktop, tags: ['desktop'] }
-    # My dotfiles live here
-    - { role: dotfiles, tags: ['dotfiles'] }
     # Installs neovim and testing tooling
     - { role: nvim, tags: ['nvim'] }
     # Most of what follows is required for devops
     - { role: chef-workstation, tags: ['chef', 'provisioning'] }
     - { role: ruby, tags: ['ruby', 'rvm'] }
     # - { role: sdkman, tags: ['sdkman', 'java'] }
+    - { role: nodejs, tags: ['nodejs'] }
     - { role: go, tags: ['go'] }
     - { role: ssh, tags: ['ssh'] }
     - { role: ansible, tags: ['ansible', 'provisioning'] }
     - { role: packer, tags: ['packer'] }
+    - { role: github, tags: ['github', 'contianers'] }
     - { role: gcloud-sdk, tags: ['gcloud-sdk'] }
     - { role: influxdb-cli, tags: ['influxdb-cli', 'database'] }
     - { role: kubectl, tags: ['kubectl', 'contianers'] }

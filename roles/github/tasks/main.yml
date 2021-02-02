@@ -1,0 +1,33 @@
+---
+- stat:
+    path: /usr/local/bin/gh
+  register: file
+
+- name: Download GitHub CLI
+  unarchive:
+    src: "https://github.com/cli/cli/releases/download/v{{ github.version }}/gh_{{ github.version }}_linux_amd64.tar.gz"
+    dest: /tmp
+    remote_src: yes
+  when: not file.stat.exists
+
+- name: Copy Github to /usr/local/bin
+  copy:
+    src: "/tmp/gh_{{ github.version }}_linux_amd64/bin/gh"
+    dest: /usr/local/bin/gh
+    owner: root
+    group: root
+    mode: +x
+  when: not file.stat.exists
+
+- name: Copy man pages
+  copy:
+    src: "/tmp/gh_{{ github.version }}_linux_amd64/share/man/man1/"
+    dest: /usr/share/man/man1/
+    owner: root
+    group: root
+    mode: +x
+  when: not file.stat.exists
+
+- name: Update man db
+  command: mandb
+  when: not file.stat.exists

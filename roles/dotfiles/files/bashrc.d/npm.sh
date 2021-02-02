@@ -1,4 +1,4 @@
-if [ command -v npm &> /dev/null ]; then
+if command -v npm &> /dev/null; then
   case `uname` in
     Darwin)
       # commands for OS X go here
@@ -10,7 +10,7 @@ if [ command -v npm &> /dev/null ]; then
       fi
 
       # commands for Linux go here
-      export PATH=$NPM_CONFIG_PREFIX:$PATH
+      export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
     ;;
-esac
+  esac
 fi

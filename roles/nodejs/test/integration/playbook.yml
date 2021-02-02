@@ -1,0 +1,5 @@
+---
+- name: nodejs
+  hosts: all
+  roles:
+  - { role: nodejs }

@@ -30,9 +30,8 @@ fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-
-source '/home/alextylor/lib/azure-cli/az.completion'
+source "$HOME/lib/azure-cli/az.completion"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/alextylor/.sdkman"
-[[ -s "/home/alextylor/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alextylor/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
