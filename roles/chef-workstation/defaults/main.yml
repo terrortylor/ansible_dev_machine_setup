@@ -1,8 +1,8 @@
 ---
 vagrant:
-  version: 2.2.9-1.fc32
+  version: 2.2.9+dfsg-1ubuntu1
 
 virtualbox:
-  version: 6.1
+  version: 6.1.14-dfsg-4
 
 

@@ -8,3 +8,11 @@ function git-update-all() {
     fi
   done
 }
+
+function git-branch() {
+    context="$(git branch | fzf)"
+    if [[ -n ${context} ]]; then
+      context=${context//\*}
+      git checkout ${context}
+    fi
+}

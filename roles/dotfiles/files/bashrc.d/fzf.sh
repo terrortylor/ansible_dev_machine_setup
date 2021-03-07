@@ -92,9 +92,7 @@ rgfzf() {
   FZF_DEFAULT_COMMAND="$RG_PREFIX '$query' ${path}" \
     fzf --bind "change:reload:$RG_PREFIX {q} ${path} || true" \
     --ansi --phony --query "$query" \
+    --layout=reverse \
+    --preview-window=bottom \
     --preview 'RgFzfPreview {}'
-}
-
-SearchNotes() {
-  rgfzf "~/personnal-workspace/notes" ${1}
 }

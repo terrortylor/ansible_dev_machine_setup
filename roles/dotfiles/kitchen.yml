@@ -12,7 +12,7 @@ verifier:
   name: inspec
 
 platforms:
-  - name: generic/fedora32
+  - name: generic/ubuntu2010
     provisioner:
       extra_vars:
         # as role not running locally we need to set this value, it's set in the defaults as role_path otherwise

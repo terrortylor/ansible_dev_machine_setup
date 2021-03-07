@@ -5,61 +5,70 @@
   # Pipe to length, if zero (empty) then fail
   when: username | length == 0
 
-- name: Gather the rpm package facts
+- name: Gather the apt package facts
   package_facts:
-    manager: rpm
+    manager: apt
   when: ansible_facts.packages is not defined
 
 - name: Install neovim
-  yum:
+  package:
     name: neovim
   when: "'neovim' not in ansible_facts.packages"
 
 - name: Install python3-neovim
-  yum:
+  package:
     name: python3-neovim
   when: "'python3-neovim' not in ansible_facts.packages"
 
-- name: Install lua
-  yum:
-    name: lua
+- name: Install luajit
+  package:
+    name: luajit
   when: "'lua' not in ansible_facts.packages"
 
-- name: Install lua-devel
-  yum:
-    name: lua-devel
-  when: "'lua-devel' not in ansible_facts.packages"
+# - name: Install lua-devel
+#   package:
+#     name: lua-devel
+#   when: "'lua-devel' not in ansible_facts.packages"
+# 
+# - name: Install luarocks
+#   package:
+#     name: luarocks
+#   when: "'luarocks' not in ansible_facts.packages"
+# 
+# - name: Gather installed lua rocks
+#   shell: luarocks list
+#   register: rocks
+# 
+# - name: Install lua rocks
+#   shell: "luarocks install {{ item }}"
+#   loop: "{{ luarocks_packages }}"
+#   when: "'{{ item }}' not in rocks.stdout"
+# 
+# - name: Ensure the following is run for specific user
+#   block:
+# 
+#   - name: "Ensure {{ home_path }}/{{ username }}/.config directory exists"
+#     file:
+#       path: "{{ home_path }}/{{ username }}/.config"
+#       state: directory
+# 
+#   - name: Create symbolic link of neovim config files
+#     file:
+#       src: '{{ workspace_home }}/vim-environment'
+#       dest: '{{ home_path }}/{{ username }}/.config/nvim'
+#       state: link
+# 
+#   become: true
+#   become_user: "{{ username }}"
+# 
+# - name: Add neovim source and build dependencies
+#   import_tasks: nvim-source.yml
+# 
+- name: Add Diagnostic lanuage server for linting and formatting
+  import_tasks: lsp-diagnostic-languageserver.yml
 
-- name: Install luarocks
-  yum:
-    name: luarocks
-  when: "'luarocks' not in ansible_facts.packages"
-
-- name: Gather installed lua rocks
-  shell: luarocks list
-  register: rocks
-
-- name: Install lua rocks
-  shell: "luarocks install {{ item }}"
-  loop: "{{ luarocks_packages }}"
-  when: "'{{ item }}' not in rocks.stdout"
-
-- name: Ensure the following is run for specific user
-  block:
-
-  - name: "Ensure {{ home_path }}/{{ username }}/.config directory exists"
-    file:
-      path: "{{ home_path }}/{{ username }}/.config"
-      state: directory
-
-  - name: Create symbolic link of neovim config files
-    file:
-      src: '{{ workspace_home }}/vim-environment'
-      dest: '{{ home_path }}/{{ username }}/.config/nvim'
-      state: link
-
-  become: true
-  become_user: "{{ username }}"
-
-- name: Add neovim source and build dependencies
-  import_tasks: nvim-source.yml
+- name: Add Typescript LSP dependencies
+  import_tasks: lsp-typescript.yml
+  
+# - name: Add GO LSP dependencies
+#   import_tasks: lsp-go.yml

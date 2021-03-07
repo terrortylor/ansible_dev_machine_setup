@@ -1,0 +1,5 @@
+---
+dependencies:
+  - role: dotfiles
+  - role: nodejs
+  - role: go

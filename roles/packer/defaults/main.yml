@@ -1,0 +1,5 @@
+---
+home_path: "/home/"
+username: "vagrant"
+packer:
+  version: 1.6.1

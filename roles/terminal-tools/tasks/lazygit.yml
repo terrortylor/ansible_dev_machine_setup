@@ -1,12 +1,12 @@
 ---
-- name: Enable Fedora Copr for LXD
+- name: Enable lazygit repo
   command:
-    cmd: dnf copr enable -y atim/lazygit
-    creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:atim:lazygit.repo
+    cmd: add-apt-repository ppa:lazygit-team/release
+    creates: /etc/apt/sources.list.d/lazygit-team-ubuntu-release-groovy.list
 
-- name: Gather the rpm package facts
+- name: Gather the apt package facts
   package_facts:
-    manager: rpm
+    manager: apt
   when: ansible_facts.packages is not defined
 
 - name: Install LazyGit

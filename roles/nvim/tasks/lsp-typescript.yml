@@ -1,0 +1,7 @@
+---
+- name: Install typescript langage server tooling
+  command: "bash -ic 'npm install -g {{ item }}'"
+  loop:
+    - typescript
+    - typescript-language-server
+    - eslint_d

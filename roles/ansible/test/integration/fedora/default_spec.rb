@@ -2,6 +2,10 @@ describe package('ansible') do
   it { should be_installed }
 end
 
+describe package('python3-pip') do
+  it { should be_installed }
+end
+
 describe pip('virtualenv') do
   it { should be_installed }
 end

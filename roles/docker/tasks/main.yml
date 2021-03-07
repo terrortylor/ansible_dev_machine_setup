@@ -1,49 +1,38 @@
-# https://fedoramagazine.org/docker-and-fedora-32/
 ---
-- name: Check if systemd.unified_cgroup_hierarchy=0 is set in kernelopts
-  command: grep -Eq '^kernelopts=.* systemd\.unified_cgroup_hierarchy=0' /boot/grub2/grubenv
-  register: grubenv_has_cgroup_exception
-  check_mode: no
-  ignore_errors: yes
-  changed_when: no
+- name: Gather the apt package facts
+  package_facts:
+    manager: apt
+  when: ansible_facts.packages is not defined
 
-- name: Enable old cgroups
-  command: grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
-  when:
-    - grubenv_has_cgroup_exception.rc != 0
-
-- name: Install moby
+- name: "Install docker dependencies"
   package:
-    name: moby-engine
+    name: "{{ item }}"
+  when: item not in ansible_facts.packages
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
 
-- name: Docker Compose
-  package:
-    name: docker-compose
-
-- name: Enable moby/docker
-  service:
-    name: docker
-    enabled: yes
-
-- name: Create docker group
-  group:
-    name: docker
+- name: Add Docker GPG apt Key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
-- name: Add user to docker group
-  user:
-    name: "{{ username }}"
-    groups: docker
-    append: yes
+- shell: lsb_release -cs
+  register: release
 
-- firewalld:
-    interface: docker0
-    zone: trusted
-    permanent: true
-    state: enabled
-
-- firewalld:
-    masquerade: true
-    zone: FedoraWorkstation
-    permanent: true
-    state: enabled
+# This fails due to ansible apt source that is incorrect, deleted it then ran fine
+# /etc/apt/sources.list.d/ansible-ubuntu-ansible-groovy.list
+- name: Add Docker Repository
+  ansible.builtin.apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ release.stdout }} stable"
+    
+- name: Install docker
+  package:
+    name: "{{ item }}"
+  when: item not in ansible_facts.packages
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io

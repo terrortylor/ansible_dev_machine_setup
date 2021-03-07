@@ -12,7 +12,7 @@ verifier:
   name: inspec
 
 platforms:
-  - name: generic/fedora32
+  - name: generic/ubuntu2010
     provisioner:
       extra_vars:
         # This is used by the kitchen role, sole purpose is to sync this repository to vm

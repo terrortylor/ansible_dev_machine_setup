@@ -1,16 +1,16 @@
 ---
-- name: Gather the rpm package facts
+- name: Gather the apt package facts
   package_facts:
-    manager: rpm
+    manager: apt
   when: ansible_facts.packages is not defined
 
-- name: "Install fedora-workstation-repositories"
-  package:
-    name: "fedora-workstation-repositories"
-  when: "'fedora-workstation-repositories' not in ansible_facts.packages"
+# - name: "Install fedora-workstation-repositories"
+#   package:
+#     name: "fedora-workstation-repositories"
+#   when: "'fedora-workstation-repositories' not in ansible_facts.packages"
 
-- name: "Install google-chrome"
-  dnf:
-    name: "google-chrome-stable"
-    enablerepo: "google-chrome"
+# TODO have upgrade flag that will uninstall first
+- name: "Install google-chrome-stable"
+  apt:
+    deb: "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
   when: "'google-chrome-stable' not in ansible_facts.packages"

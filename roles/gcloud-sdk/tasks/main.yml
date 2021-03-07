@@ -1,20 +1,20 @@
 ---
-- name: Gather the rpm package facts
+- name: Gather the apt package facts
   package_facts:
-    manager: rpm
+    manager: apt
   when: ansible_facts.packages is not defined
 
-- name: Add google-cloud-sdk repository
-  yum_repository:
-    name: google-cloud-sdk
-    description: Repository used to install google-cloud-sdk
-    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64
-    gpgcheck: yes
-    repo_gpgcheck: yes
-    gpgkey:
-      - https://packages.cloud.google.com/yum/doc/yum-key.gpg
-      - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+- name: Add gcloud-sdk GPG apt Key
+  ansible.builtin.apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
 
+# This fails due to ansible apt source that is incorrect, deleted it then ran fine
+# /etc/apt/sources.list.d/ansible-ubuntu-ansible-groovy.list
+- name: Add gcloud-sdk Repository
+  ansible.builtin.apt_repository:
+    repo: deb https://packages.cloud.google.com/apt cloud-sdk main
+    
 - name: Install google-cloud-sdk
   package:
     name: google-cloud-sdk

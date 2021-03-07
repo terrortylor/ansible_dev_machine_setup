@@ -1,10 +1,10 @@
 ---
-- name: Gather the rpm package facts
+- name: Gather the apt package facts
   package_facts:
-    manager: rpm
+    manager: apt
   when: ansible_facts.packages is not defined
 
 - name: "Install slack"
-  yum:
-    name: "https://downloads.slack-edge.com/linux_releases/slack-{{ slack.version }}.x86_64.rpm"
+  apt:
+    deb: "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.13.0-amd64.deb"
   when: "'slack' not in ansible_facts.packages"

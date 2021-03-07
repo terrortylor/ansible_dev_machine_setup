@@ -4,7 +4,7 @@
   end
 end
 
-%w[rg fd].each do |binary|
+%w[rg fdfind].each do |binary|
   describe file("/usr/bin/#{binary}") do
     it { should exist }
   end
@@ -16,6 +16,6 @@ end
   end
 end
 
-describe file('/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:atim:lazygit.repo') do
+describe file('/etc/apt/sources.list.d/lazygit-team-ubuntu-release-groovy.list') do
   it { should exist }
 end

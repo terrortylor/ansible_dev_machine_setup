@@ -1,7 +1,7 @@
-describe package('nodejs') do
-  it { should be_installed }
+describe file("/home/vagrant/.nvm/nvm.sh") do
+  it { should be_exist }
 end
 
-describe package('npm') do
-  it { should be_installed }
+describe command('bash -ic "node -v"') do
+  its('stdout') { should include 'v12.21.0' }
 end

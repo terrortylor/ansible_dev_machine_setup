@@ -6,11 +6,7 @@ end
 
 describe package('vagrant') do
   it { should be_installed }
-  its('version') { should eq '2.2.9-1.fc32' }
-end
-
-describe file('/etc/yum.repos.d/virtualbox.repo') do
-  it { should exist }
+  its('version') { should eq '2.2.9+dfsg-1ubuntu1' }
 end
 
 describe file('/usr/bin/VBoxManage') do
@@ -18,5 +14,5 @@ describe file('/usr/bin/VBoxManage') do
 end
 
 describe command('VBoxManage -v') do
-  its('stdout') { should match /6.1.12r139181/ }
+  its('stdout') { should match /6.1.14_Ubuntur140239/ }
 end

@@ -1,5 +1,19 @@
 ---
-- name: Install nodejs
-  package:
-    name: nodejs
-    state: present
+- name: Set path to include RVM, and ensure single-user install
+  block:
+
+  - name: Install NVM
+    shell: >
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+    args:
+      warn: no
+      creates: "{{ home_path }}/{{ username }}/.nvm/nvm.sh"
+
+  - name: "Install node versions... (takes awhile to do the installs)"
+    command: "bash -ic \"nvm install {{ item }}\""
+    args:
+      creates: "{{ home_path }}/{{ username }}/.nvm/versions/node/{{ item }}"
+    loop: "{{ node_versions }}"
+
+  become: true
+  become_user: "{{ username }}"

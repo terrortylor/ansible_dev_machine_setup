@@ -12,7 +12,7 @@ verifier:
   name: inspec
 
 platforms:
-  - name: generic/fedora32
+  - name: generic/ubuntu2010
 
 suites:
   - name: fedora

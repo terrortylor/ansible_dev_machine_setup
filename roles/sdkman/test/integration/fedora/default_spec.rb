@@ -8,7 +8,7 @@ describe file('/home/vagrant/.sdkman/etc/config') do
   its('content') { should match /^sdkman_auto_answer=true$/ }
 end
 
-%w[11.0.8-zulu].each do |java|
+%w[11.0.10-zulu].each do |java|
   describe file("/home/vagrant/.sdkman/candidates/java/#{java}") do
   it { should exist }
   end

@@ -21,3 +21,10 @@ end
     it { should exist }
   end
 end
+
+# Language server related
+%w[diagnostic-languageserver typescript typescript-language-server].each do |npmpack|
+  describe command("bash -ic 'npm list -g --depth 0'") do
+    its('stdout') { should include npmpack }
+  end
+end

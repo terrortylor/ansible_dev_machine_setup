@@ -1,0 +1,5 @@
+---
+home_path: "/home"
+username: "vagrant"
+node_versions:
+  - v12.21.0

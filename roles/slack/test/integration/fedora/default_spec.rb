@@ -1,3 +1,3 @@
-describe package('slack') do
-  it { should be_installed }
+describe file("/usr/bin/slack") do
+  it { should exist }
 end

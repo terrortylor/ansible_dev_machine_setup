@@ -5,9 +5,9 @@
     msg: "Username is empty"
   when: username | length == 0
 
-- name: Gather the rpm package facts
+- name: Gather the apt package facts
   package_facts:
-    manager: rpm
+    manager: apt
   when: ansible_facts.packages is not defined
 
 - name: "Install RVM dependencies"
@@ -43,9 +43,8 @@
     register: sym
 
   - name: Install RVM
-    shell: |
-      set -o pipefail
-      curl -sSL https://get.rvm.io | bash -s stable
+    shell: >
+      curl -o- -sSL https://get.rvm.io | bash -s stable
     args:
       warn: no
       creates: "{{ home_path }}/{{ username }}/.rvm/bin/rvm"

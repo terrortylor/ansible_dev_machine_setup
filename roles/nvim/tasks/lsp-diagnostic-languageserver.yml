@@ -1,0 +1,3 @@
+---
+- name: Install diagnostic language server
+  command: "bash -ic 'npm install -g diagnostic-languageserver'"
