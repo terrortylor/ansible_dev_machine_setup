@@ -1,0 +1,23 @@
+---
+- name: Gather the apt package facts
+  package_facts:
+    manager: apt
+  when: ansible_facts.packages is not defined
+
+- name: "Install vagrant"
+  ansible.builtin.package:
+    name: "vagrant"
+
+- name: "Install virtualbox"
+  ansible.builtin.package:
+    name: "virtualbox"
+
+- name: "Install virtualbox"
+  ansible.builtin.package:
+     name: "virtualbox-guest-additions-iso"
+
+- name: "Install chef 3.3.23"
+  ansible.builtin.apt:
+    # 18.04 is the highest OS version supported for 3.2.23
+    deb: "https://packages.chef.io/files/stable/chefdk/3.3.23/ubuntu/18.04/chefdk_3.3.23-1_amd64.deb"
+  when: "'chefdk' not in ansible_facts.packages"

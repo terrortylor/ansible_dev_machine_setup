@@ -1,11 +1,10 @@
 ---
-- name: Gather the apt package facts
-  package_facts:
-    manager: apt
-  when: ansible_facts.packages is not defined
+- name: Install standalone tools
+  import_tasks: general.yml
+  tags:
+    - general
 
-- name: "Install packages"
-  package:
-    name: "{{ item }}"
-  when: item not in ansible_facts.packages
-  loop: "{{ desktop.packages }}"
+- name: Setup chef workstation
+  import_tasks: chef-workstation.yml
+  tags:
+    - chef

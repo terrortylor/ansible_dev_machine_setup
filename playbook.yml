@@ -11,13 +11,12 @@
     # Installs neovim and testing tooling
     - { role: nvim, tags: ['nvim'] }
     # Most of what follows is required for devops
-    - { role: chef-workstation, tags: ['chef', 'provisioning'] }
     - { role: ruby, tags: ['ruby', 'rvm'] }
-    # - { role: sdkman, tags: ['sdkman', 'java'] }
+    - { role: sdkman, tags: ['sdkman', 'java'] }
     - { role: nodejs, tags: ['nodejs'] }
     - { role: go, tags: ['go'] }
-    - { role: ssh, tags: ['ssh'] }
-    - { role: ansible, tags: ['ansible', 'provisioning'] }
+    # - { role: ssh, tags: ['ssh'] }
+    # - { role: ansible, tags: ['ansible', 'provisioning'] }
     - { role: packer, tags: ['packer'] }
     - { role: github, tags: ['github', 'contianers'] }
     - { role: gcloud-sdk, tags: ['gcloud-sdk'] }

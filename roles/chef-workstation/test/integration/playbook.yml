@@ -1,5 +1,0 @@
----
-- name: chef-workstation
-  hosts: all
-  roles:
-  - { role: chef-workstation }

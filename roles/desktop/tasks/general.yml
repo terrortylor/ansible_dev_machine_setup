@@ -1,0 +1,14 @@
+---
+- name: Gather the apt package facts
+  package_facts:
+    manager: apt
+  when: ansible_facts.packages is not defined
+
+- name: "Install packages"
+  package:
+    name: "{{ item }}"
+  when: item not in ansible_facts.packages
+  loop:
+   - remmina
+   - anki
+

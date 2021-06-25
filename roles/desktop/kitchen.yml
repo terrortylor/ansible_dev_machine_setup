@@ -12,7 +12,14 @@ verifier:
   name: inspec
 
 platforms:
-  - name: generic/ubuntu2010
+  ## ubuntu 21.10
+  - name: ubuntu/impish64
 
 suites:
-  - name: fedora
+  - name: all
+  - name: general
+    provisioner:
+      ansible_extra_flags: '--tags=general'
+  - name: chef
+    provisioner:
+      ansible_extra_flags: '--tags=chef'
