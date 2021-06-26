@@ -1,0 +1,34 @@
+---
+- name: Install packages
+  package:
+    name: "{{ item }}"
+  loop:
+    - tmux
+    - fzf
+    - bat      # cat clone with syntax highlighting
+    - fd-find  # find alternative: https://github.com/sharkdp/fd
+    - ripgrep  # fast alternative to grep
+    - nmap
+    - lastpass-cli
+    - mlocate
+
+
+- name: Get lazygit
+  include_role:
+    name: get_binary
+  vars:
+    package:
+      name: lazygit
+      version: 0.28.2
+      src: "https://github.com/jesseduffield/lazygit/releases/download/v0.28.2/lazygit_0.28.2_Linux_x86_64.tar.gz"
+      extracted_path: /lazygit
+
+- name: Get gron
+  include_role:
+    name: get_binary
+  vars:
+    package:
+      name: gron
+      version: 0.6.1
+      src: "https://github.com/tomnomnom/gron/releases/download/v0.6.1/gron-linux-amd64-0.6.1.tgz"
+      extracted_path: /gron

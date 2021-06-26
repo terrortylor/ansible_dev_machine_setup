@@ -1,0 +1,17 @@
+---
+- name: Install container tools
+  package:
+    name: "{{ item }}"
+  loop:
+    - docker-compose
+
+- name: Get k9s
+  include_role:
+    name: get_binary
+  vars:
+    package:
+      name: k9s
+      version: 0.24.10
+      version_cmd: version
+      src: "https://github.com/derailed/k9s/releases/download/v0.24.10/k9s_v0.24.10_Linux_x86_64.tar.gz"
+      extracted_path: /k9s

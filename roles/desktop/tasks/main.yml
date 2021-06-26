@@ -4,7 +4,17 @@
   tags:
     - general
 
+- name: Install terminal tools
+  import_tasks: terminal-tools.yml
+  tags:
+    - terminal-tools
+
 - name: Setup chef workstation
   import_tasks: chef-workstation.yml
   tags:
     - chef
+
+- name: Setup container tools
+  import_tasks: container.yml
+  tags:
+    - container

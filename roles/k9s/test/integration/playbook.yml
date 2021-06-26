@@ -1,5 +1,0 @@
----
-- name: k9s
-  hosts: all
-  roles:
-  - { role: k9s }

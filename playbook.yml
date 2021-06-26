@@ -4,8 +4,6 @@
   roles:
     # My dotfiles live here, want this to be first
     - { role: dotfiles, tags: ['dotfiles'] }
-    # Provisions required terminal tooling
-    - { role: terminal-tools, tags: ['terminal'] }
     # Provisions desktop gui apps
     - { role: desktop, tags: ['desktop'] }
     # Installs neovim and testing tooling
@@ -26,6 +24,5 @@
     - { role: notary, tags: ['notary'] }
     - { role: minikube, tags: ['minikube'] }
     - { role: docker, tags: ['docker'] }
-    - { role: k9s, tags: ['k9s', 'contianers'] }
     - { role: terraform, tags: ['terraform', 'provisioning'] }
 

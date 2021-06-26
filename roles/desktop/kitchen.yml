@@ -20,6 +20,12 @@ suites:
   - name: general
     provisioner:
       ansible_extra_flags: '--tags=general'
+  - name: terminal-tools
+    provisioner:
+      ansible_extra_flags: '--tags=terminal-tools'
+  - name: container
+    provisioner:
+      ansible_extra_flags: '--tags=container'
   - name: chef
     provisioner:
       ansible_extra_flags: '--tags=chef'
